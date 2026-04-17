@@ -16,7 +16,7 @@
     <Page.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="/Resources/Styles/TextBoxWordWrap.xaml"/>
+                <ResourceDictionary Source="/Resources/Styles/TextBlockWordWrap.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Page.Resources>

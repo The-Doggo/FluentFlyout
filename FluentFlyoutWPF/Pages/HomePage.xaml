@@ -17,7 +17,7 @@
     <Page.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="/Resources/Styles/TextBoxWordWrap.xaml"/>
+                <ResourceDictionary Source="/Resources/Styles/TextBlockWordWrap.xaml"/>
             </ResourceDictionary.MergedDictionaries>
             <utils:WidthToBoolConverter x:Key="WidthToBoolConverter" />
         </ResourceDictionary>
