@@ -12,6 +12,14 @@
       d:DataContext="{d:DesignInstance viewModels:UserSettings}"
       Foreground="{DynamicResource TextFillColorPrimaryBrush}"
       d:Background="White">
+    
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Resources/Styles/TextBlockWordWrap.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
 
     <StackPanel MaxWidth="1000" Margin="16">
         <TextBlock Text="{DynamicResource MediaFlyoutTitle}" FontSize="24" FontWeight="SemiBold" Margin="0,0,0,20" />
@@ -34,14 +42,14 @@
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
-            <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0,0,0,24">
-                <Border CornerRadius="10" ClipToBounds="True" Width="164" Height="98">
+            <Grid Margin="0,0,0,24" RowDefinitions="Auto" ColumnDefinitions="Auto, *">
+                <Border Grid.Column="0" VerticalAlignment="Top" HorizontalAlignment="Left" CornerRadius="10" ClipToBounds="True" Width="164" Height="98">
                     <Border.Background>
                         <ImageBrush ImageSource="/Resources/FluentFlyoutDemo3.1.png" Stretch="UniformToFill" />
                     </Border.Background>
                 </Border>
-                <TextBlock Text="{DynamicResource MediaFlyoutDescription}" FontSize="14" FontWeight="Regular" HorizontalAlignment="Stretch" Opacity="0.75" Margin="12,0,0,0" MaxWidth="450" TextWrapping="WrapWithOverflow" />
-            </StackPanel>
+                <TextBlock Grid.Column="1" Text="{DynamicResource MediaFlyoutDescription}" FontSize="14" FontWeight="Regular" HorizontalAlignment="Left" Opacity="0.75" Margin="12,0,0,0" MaxWidth="450" TextWrapping="WrapWithOverflow" />
+            </Grid>
             <ui:CardControl Grid.Row="1" Icon="{ui:SymbolIcon VideoPlayPause24}" Margin="0,0,0,24">
                 <ui:CardControl.Header>
                     <StackPanel Orientation="Vertical">

@@ -6,12 +6,22 @@
       xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
       xmlns:viewModels="clr-namespace:FluentFlyoutWPF.ViewModels"
       xmlns:fluentflyoutcontrols="clr-namespace:FluentFlyout.Controls"
+      xmlns:utils="clr-namespace:FluentFlyoutWPF.Classes.Utils"
       mc:Ignorable="d"
       d:DesignHeight="1200" d:DesignWidth="600"
       Title="HomePage"
       d:DataContext="{d:DesignInstance viewModels:UserSettings}"
       Foreground="{DynamicResource TextFillColorPrimaryBrush}"
       d:Background="White">
+    
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Resources/Styles/TextBlockWordWrap.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+            <utils:WidthToBoolConverter x:Key="WidthToBoolConverter" />
+        </ResourceDictionary>
+    </Page.Resources>
 
     <StackPanel MaxWidth="1000" Margin="16">
         <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
@@ -20,10 +30,20 @@
         </StackPanel>
 
         <TextBlock Text="{DynamicResource HomeTitle}" FontSize="24" FontWeight="SemiBold" Margin="0,36,0,12" />
-        <StackPanel Orientation="Horizontal">
-            <ui:Button x:Name="ViewUpdatesButton" Appearance="Transparent" Padding="0,0,16,0" BorderBrush="Transparent" Margin="0,0,16,16" Click="ViewUpdates_Click">
+        <fluentflyoutcontrols:WrappingGrid Margin="0,0,0,16" DesiredSizeIndex="0" StaticItemIndex="1" RowDefinitions="Auto, 0, Auto" ColumnDefinitions="*, 0, Auto">
+            <ui:Button x:Name="ViewUpdatesButton" Appearance="Transparent" Padding="0,0,16,0" BorderBrush="Transparent" Margin="0" Click="ViewUpdates_Click">
                 <StackPanel Orientation="Horizontal">
-                    <Border CornerRadius="8" ClipToBounds="True" Width="200" Height="98" Margin="0,0,16,0">
+                    <Border ClipToBounds="True" Width="200" Height="98" Margin="0,0,16,0">
+                        <Border.Style>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="8" />
+                                <Style.Triggers>
+                                    <DataTrigger Value="True" Binding="{Binding IsMouseOver, RelativeSource={RelativeSource AncestorType=ui:Button}}">
+                                        <Setter Property="CornerRadius" Value="3,0,0,3" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Border.Style>
                         <Border.Background>
                             <ImageBrush ImageSource="/Resources/logo-change.png" Stretch="UniformToFill" />
                         </Border.Background>
@@ -35,76 +55,91 @@
                 </StackPanel>
             </ui:Button>
 
-            <!--Update status indicator-->
-            <ui:Button Appearance="Transparent" Padding="8" BorderBrush="Transparent" Margin="0,0,16,16" Click="CheckForUpdates_Click">
-                <StackPanel Orientation="Horizontal">
-                    <ui:SymbolIcon x:Name="UpdateStatusIcon" FontSize="24" Margin="0,0,12,0">
-                        <ui:SymbolIcon.Style>
-                            <Style TargetType="ui:SymbolIcon">
-                                <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}" />
-                                <Style.Triggers>
-                                    <DataTrigger Binding="{Binding IsUpdateAvailable, Source={x:Static viewModels:UpdateState.Current}}" Value="True">
-                                        <Setter Property="Symbol" Value="ArrowDownload24" />
-                                        <Setter Property="Foreground" Value="{DynamicResource AccentTextFillColorPrimaryBrush}" />
-                                        <Setter Property="Filled" Value="False" />
-                                    </DataTrigger>
-                                    <DataTrigger Binding="{Binding IsUpdateAvailable, Source={x:Static viewModels:UpdateState.Current}}" Value="False">
-                                        <Setter Property="Symbol" Value="CheckmarkCircle24" />
-                                        <Setter Property="Foreground" Value="{DynamicResource SystemFillColorSuccessBrush}" />
-                                        <Setter Property="Filled" Value="True" />
-                                    </DataTrigger>
-                                </Style.Triggers>
-                            </Style>
-                        </ui:SymbolIcon.Style>
-                    </ui:SymbolIcon>
-                    <StackPanel Orientation="Vertical" VerticalAlignment="Center">
-                        <ui:TextBlock x:Name="UpdateStatusText" FontWeight="SemiBold">
-                            <ui:TextBlock.Style>
-                                <Style TargetType="ui:TextBlock">
-                                    <Setter Property="Text" Value="{DynamicResource UpToDate}" />
+            <WrapPanel VerticalAlignment="Center">
+                <!--Supporter status indicator-->
+                <ui:Button Appearance="Transparent" Padding="8" BorderBrush="Transparent" Margin="0,0,16,0" IsHitTestVisible="False">
+                    <ui:Button.Style>
+                        <Style TargetType="ui:Button" BasedOn="{StaticResource {x:Type ui:Button}}">
+                            <Setter Property="Visibility" Value="Collapsed" />
+                            <Style.Triggers>
+                                <MultiDataTrigger>
+                                    <MultiDataTrigger.Conditions>
+                                        <Condition Binding="{Binding IsStoreVersion}" Value="True" />
+                                        <Condition Binding="{Binding IsPremiumUnlocked}" Value="True" />
+                                    </MultiDataTrigger.Conditions>
+                                    <Setter Property="Visibility" Value="Visible" />
+                                </MultiDataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </ui:Button.Style>
+                    <StackPanel Orientation="Horizontal">
+                        <ui:SymbolIcon Symbol="Heart24" FontSize="24" Margin="0,0,10,0" Foreground="{DynamicResource AccentTextFillColorPrimaryBrush}" />
+                        <StackPanel Orientation="Vertical" VerticalAlignment="Center">
+                            <ui:TextBlock Text="Supporter" FontWeight="SemiBold" />
+                            <ui:TextBlock Text="Thank you!" Opacity="0.5" />
+                        </StackPanel>
+                    </StackPanel>
+                </ui:Button>
+
+                <!--Update status indicator-->
+                <ui:Button Appearance="Transparent" Padding="8" BorderBrush="Transparent" Margin="0" Click="CheckForUpdates_Click">
+                    <StackPanel Orientation="Horizontal">
+                        <ui:SymbolIcon x:Name="UpdateStatusIcon" FontSize="24" Margin="0,0,12,0">
+                            <ui:SymbolIcon.Style>
+                                <Style TargetType="ui:SymbolIcon">
+                                    <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}" />
                                     <Style.Triggers>
                                         <DataTrigger Binding="{Binding IsUpdateAvailable, Source={x:Static viewModels:UpdateState.Current}}" Value="True">
-                                            <Setter Property="Text" Value="{DynamicResource UpdateAvailable}" />
+                                            <Setter Property="Symbol" Value="ArrowDownload24" />
                                             <Setter Property="Foreground" Value="{DynamicResource AccentTextFillColorPrimaryBrush}" />
+                                            <Setter Property="Filled" Value="False" />
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding IsUpdateAvailable, Source={x:Static viewModels:UpdateState.Current}}" Value="False">
+                                            <Setter Property="Symbol" Value="CheckmarkCircle24" />
+                                            <Setter Property="Foreground" Value="{DynamicResource SystemFillColorSuccessBrush}" />
+                                            <Setter Property="Filled" Value="True" />
                                         </DataTrigger>
                                     </Style.Triggers>
                                 </Style>
-                            </ui:TextBlock.Style>
-                        </ui:TextBlock>
-                        <ui:TextBlock x:Name="LastCheckedText" Opacity="0.5" FontSize="12" />
+                            </ui:SymbolIcon.Style>
+                        </ui:SymbolIcon>
+                        <StackPanel Orientation="Vertical" VerticalAlignment="Center">
+                            <ui:TextBlock x:Name="UpdateStatusText" FontWeight="SemiBold">
+                                <ui:TextBlock.Style>
+                                    <Style TargetType="ui:TextBlock">
+                                        <Setter Property="Text" Value="{DynamicResource UpToDate}" />
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding IsUpdateAvailable, Source={x:Static viewModels:UpdateState.Current}}" Value="True">
+                                                <Setter Property="Text" Value="{DynamicResource UpdateAvailable}" />
+                                                <Setter Property="Foreground" Value="{DynamicResource AccentTextFillColorPrimaryBrush}" />
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </ui:TextBlock.Style>
+                            </ui:TextBlock>
+                            <ui:TextBlock x:Name="LastCheckedText" Opacity="0.5" FontSize="12" />
+                        </StackPanel>
                     </StackPanel>
-                </StackPanel>
-            </ui:Button>
-
-            <!--Supporter status indicator-->
-            <ui:Button Appearance="Transparent" Padding="8" BorderBrush="Transparent" Margin="0,0,0,16" IsHitTestVisible="False">
-                <ui:Button.Style>
-                    <Style TargetType="ui:Button" BasedOn="{StaticResource {x:Type ui:Button}}">
-                        <Setter Property="Visibility" Value="Collapsed" />
-                        <Style.Triggers>
-                            <MultiDataTrigger>
-                                <MultiDataTrigger.Conditions>
-                                    <Condition Binding="{Binding IsStoreVersion}" Value="True"/>
-                                    <Condition Binding="{Binding IsPremiumUnlocked}" Value="True"/>
-                                </MultiDataTrigger.Conditions>
-                                <Setter Property="Visibility" Value="Visible"/>
-                            </MultiDataTrigger>
-                        </Style.Triggers>
-                    </Style>
-                </ui:Button.Style>
-                <StackPanel Orientation="Horizontal">
-                    <ui:SymbolIcon Symbol="Heart24" FontSize="24" Margin="0,0,10,0" Foreground="{DynamicResource AccentTextFillColorPrimaryBrush}" />
-                    <StackPanel Orientation="Vertical" VerticalAlignment="Center">
-                        <ui:TextBlock Text="Supporter" FontWeight="SemiBold" />
-                        <ui:TextBlock Text="Thank you!" Opacity="0.5" />
-                    </StackPanel>
-                </StackPanel>
-            </ui:Button>
-        </StackPanel>
+                </ui:Button>
+            </WrapPanel>
+        </fluentflyoutcontrols:WrappingGrid>
 
         <TextBlock Grid.Row="6" Text="{DynamicResource HomeDashboardTitle}" FontSize="14" FontWeight="SemiBold" Margin="0,0,0,6" />
-        <Grid Margin="-4" RowDefinitions="Auto, Auto, Auto" ColumnDefinitions="*, *">
-            <ui:CardAction Grid.Row="0" Grid.Column="0" Margin="4" Padding="12,20" IsChevronVisible="True" Click="MediaFlyout_Click">
+        <UniformGrid x:Name="DashboardGrid" Margin="-4">
+            <UniformGrid.Style>
+                <Style TargetType="UniformGrid">
+                    <Setter Property="Rows" Value="3" />
+                    <Setter Property="Columns" Value="2" />
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=ActualWidth, Converter={StaticResource WidthToBoolConverter}}" Value="True">
+                            <Setter Property="Rows" Value="6" />
+                            <Setter Property="Columns" Value="1" />
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </UniformGrid.Style>
+
+            <ui:CardAction Grid.Row="0" Grid.Column="0" Margin="4" Padding="12,20" IsChevronVisible="True" Click="MediaFlyout_Click" VerticalAlignment="Stretch">
                 <ui:CardAction.Icon>
                     <ui:SymbolIcon Symbol="VideoPlayPause24" FontSize="30" Filled="False" />
                 </ui:CardAction.Icon>
@@ -125,15 +160,16 @@
                 </StackPanel>
             </ui:CardAction>
 
-            <ui:CardAction Grid.Row="0" Grid.Column="1" Margin="4" Padding="12,20" IsChevronVisible="True" Click="TaskbarWidget_Click">
+            <ui:CardAction Grid.Row="0" Grid.Column="1" Margin="4" Padding="12,20" IsChevronVisible="True" Click="TaskbarWidget_Click" VerticalAlignment="Stretch">
                 <ui:CardAction.Icon>
                     <ui:SymbolIcon Symbol="TextboxAlignBottom24" FontSize="30" Filled="False" />
                 </ui:CardAction.Icon>
                 <StackPanel>
-                    <StackPanel Orientation="Horizontal">
-                        <ui:TextBlock FontWeight="Medium" Text="{DynamicResource TaskbarWidgetCustomizationTitle}" />
-                        <fluentflyoutcontrols:AccentBadge Margin="6,0,0,0" FontSize="8" />
-                    </StackPanel>
+                    <fluentflyoutcontrols:TextBlockInline FontWeight="Medium" Text="{DynamicResource TaskbarWidgetCustomizationTitle}">
+                        <fluentflyoutcontrols:TextBlockInline.InlineContent>
+                            <fluentflyoutcontrols:AccentBadge Margin="6,0,0,0" />
+                        </fluentflyoutcontrols:TextBlockInline.InlineContent>
+                    </fluentflyoutcontrols:TextBlockInline>
                     <ui:TextBlock Appearance="Secondary" Text="{Binding TaskbarWidgetEnabled, Converter={StaticResource BoolToEnabledDisabledConverter}}">
                         <ui:TextBlock.Style>
                             <Style TargetType="ui:TextBlock">
@@ -149,7 +185,7 @@
                 </StackPanel>
             </ui:CardAction>
 
-            <ui:CardAction Grid.Row="1" Grid.Column="0" Margin="4" Padding="12,20" IsChevronVisible="True" Click="NextUp_Click">
+            <ui:CardAction Grid.Row="1" Grid.Column="0" Margin="4" Padding="12,20" IsChevronVisible="True" Click="NextUp_Click" VerticalAlignment="Stretch">
                 <ui:CardAction.Icon>
                     <ui:SymbolIcon Symbol="MusicNote2Play20" FontSize="30" Filled="False" />
                 </ui:CardAction.Icon>
@@ -170,7 +206,7 @@
                 </StackPanel>
             </ui:CardAction>
 
-            <ui:CardAction Grid.Row="1" Grid.Column="1" Margin="4" Padding="12,20" IsChevronVisible="True" Click="LockKeys_Click">
+            <ui:CardAction Grid.Row="1" Grid.Column="1" Margin="4" Padding="12,20" IsChevronVisible="True" Click="LockKeys_Click" VerticalAlignment="Stretch">
                 <ui:CardAction.Icon>
                     <ui:SymbolIcon Symbol="LockMultiple24" FontSize="30" Filled="False" />
                 </ui:CardAction.Icon>
@@ -191,15 +227,16 @@
                 </StackPanel>
             </ui:CardAction>
 
-            <ui:CardAction Grid.Row="2" Grid.Column="0" Margin="4" Padding="12,20" IsChevronVisible="True" Click="TaskbarVisualizer_Click">
+            <ui:CardAction Grid.Row="2" Grid.Column="0" Margin="4" Padding="12,20" IsChevronVisible="True" Click="TaskbarVisualizer_Click" VerticalAlignment="Stretch">
                 <ui:CardAction.Icon>
                     <ui:SymbolIcon Symbol="SoundWaveCircle24" FontSize="30" Filled="False" />
                 </ui:CardAction.Icon>
                 <StackPanel>
-                    <StackPanel Orientation="Horizontal">
-                        <ui:TextBlock FontWeight="Medium" Text="{DynamicResource TaskbarVisualizerTitle}" />
-                        <fluentflyoutcontrols:AccentBadge Margin="6,0,0,0" FontSize="8" />
-                    </StackPanel>
+                    <fluentflyoutcontrols:TextBlockInline FontWeight="Medium" Text="{DynamicResource TaskbarVisualizerTitle}">
+                        <fluentflyoutcontrols:TextBlockInline.InlineContent>
+                            <fluentflyoutcontrols:AccentBadge Margin="6,0,0,0" />
+                        </fluentflyoutcontrols:TextBlockInline.InlineContent>
+                    </fluentflyoutcontrols:TextBlockInline>
                     <ui:TextBlock Appearance="Secondary" Text="{Binding TaskbarVisualizerEnabled, Converter={StaticResource BoolToEnabledDisabledConverter}}">
                         <ui:TextBlock.Style>
                             <Style TargetType="ui:TextBlock">
@@ -215,7 +252,7 @@
                 </StackPanel>
             </ui:CardAction>
 
-            <ui:CardAction Grid.Row="2" Grid.Column="1" Margin="4" Padding="12,20" IsChevronVisible="True" Click="System_Click">
+            <ui:CardAction Grid.Row="2" Grid.Column="1" Margin="4" Padding="12,20" IsChevronVisible="True" Click="System_Click" VerticalAlignment="Stretch">
                 <ui:CardAction.Icon>
                     <ui:SymbolIcon Symbol="Settings24" FontSize="30" Filled="False" />
                 </ui:CardAction.Icon>
@@ -224,7 +261,7 @@
                     <ui:TextBlock Appearance="Secondary" Text="{DynamicResource SystemConfigure}" />
                 </StackPanel>
             </ui:CardAction>
-        </Grid>
+        </UniformGrid>
 
         <StackPanel Orientation="Horizontal" Margin="0,16,0,0">
             <ui:Button Appearance="Transparent" Padding="16,4,16,0" Height="56" BorderBrush="Transparent" Margin="0,0,8,0" Click="ViewMicrosoftStore_Click">
@@ -264,77 +301,73 @@
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
 
-            <ui:CardControl Grid.Row="0">
-                <ui:CardControl.Header>
-                    <StackPanel>
-                        <StackPanel Margin="0,0,0,12" Visibility="{Binding IsPremiumUnlocked, Converter={StaticResource BoolToCollapsedVisibleConverter}}">
-                            <ui:TextBlock FontSize="14" Margin="0,0,0,8" TextWrapping="WrapWithOverflow"
-                                  Text="{DynamicResource UnlockFullExperienceText}" />
-                            <ui:TextBlock FontSize="14" Margin="12,0,12,4" Opacity="0.75" TextWrapping="WrapWithOverflow"
-                                  Text="{Binding Source={StaticResource TaskbarWidgetCustomizationPerk}, StringFormat='•  {0}'}" />
-                            <ui:TextBlock FontSize="14" Margin="12,0,12,4" Opacity="0.75" TextWrapping="WrapWithOverflow"
-                                  Text="{Binding Source={StaticResource AcrylicBlurOpacityPerk}, StringFormat='•  {0}'}" />
-                            <ui:TextBlock FontSize="14" Margin="12,0,12,4" Opacity="0.75" TextWrapping="WrapWithOverflow"
-                                  Text="{Binding Source={StaticResource HideTrayIconPerk}, StringFormat='•  {0}'}" />
-                            <ui:TextBlock FontSize="14" Margin="12,0,12,0" Opacity="0.75" TextWrapping="WrapWithOverflow"
-                                  Text="{Binding Source={StaticResource AllFuturePremiumFeatures}, StringFormat='•  {0}'}" />
-                        </StackPanel>
+            <StackPanel>
+                <StackPanel Margin="0,0,0,12" Visibility="{Binding IsPremiumUnlocked, Converter={StaticResource BoolToCollapsedVisibleConverter}}">
+                    <ui:TextBlock FontSize="14" Margin="0,0,0,8" TextWrapping="WrapWithOverflow"
+                            Text="{DynamicResource UnlockFullExperienceText}" />
+                    <ui:TextBlock FontSize="14" Margin="12,0,12,4" Opacity="0.75" TextWrapping="WrapWithOverflow"
+                            Text="{Binding Source={StaticResource TaskbarWidgetCustomizationPerk}, StringFormat='•  {0}'}" />
+                    <ui:TextBlock FontSize="14" Margin="12,0,12,4" Opacity="0.75" TextWrapping="WrapWithOverflow"
+                            Text="{Binding Source={StaticResource AcrylicBlurOpacityPerk}, StringFormat='•  {0}'}" />
+                    <ui:TextBlock FontSize="14" Margin="12,0,12,4" Opacity="0.75" TextWrapping="WrapWithOverflow"
+                            Text="{Binding Source={StaticResource HideTrayIconPerk}, StringFormat='•  {0}'}" />
+                    <ui:TextBlock FontSize="14" Margin="12,0,12,0" Opacity="0.75" TextWrapping="WrapWithOverflow"
+                            Text="{Binding Source={StaticResource AllFuturePremiumFeatures}, StringFormat='•  {0}'}" />
+                </StackPanel>
 
-                        <!-- Premium Status InfoBar (only shown for Store versions) -->
-                        <ui:InfoBar Grid.Row="1" Title="{DynamicResource PremiumUnlockedMessage}" Severity="Success" IsClosable="True">
-                            <ui:InfoBar.Style>
-                                <Style TargetType="ui:InfoBar" BasedOn="{StaticResource {x:Type ui:InfoBar}}">
-                                    <Setter Property="IsOpen" Value="False" />
-                                    <Style.Triggers>
-                                        <MultiDataTrigger>
-                                            <MultiDataTrigger.Conditions>
-                                                <Condition Binding="{Binding IsStoreVersion}" Value="True"/>
-                                                <Condition Binding="{Binding IsPremiumUnlocked}" Value="True"/>
-                                            </MultiDataTrigger.Conditions>
-                                            <Setter Property="IsOpen" Value="True"/>
-                                        </MultiDataTrigger>
-                                    </Style.Triggers>
-                                </Style>
-                            </ui:InfoBar.Style>
-                        </ui:InfoBar>
+                <!-- Premium Status InfoBar (only shown for Store versions) -->
+                <ui:InfoBar Grid.Row="1" Title="{DynamicResource PremiumUnlockedMessage}" Severity="Success" IsClosable="True">
+                    <ui:InfoBar.Style>
+                        <Style TargetType="ui:InfoBar" BasedOn="{StaticResource {x:Type ui:InfoBar}}">
+                            <Setter Property="IsOpen" Value="False" />
+                            <Style.Triggers>
+                                <MultiDataTrigger>
+                                    <MultiDataTrigger.Conditions>
+                                        <Condition Binding="{Binding IsStoreVersion}" Value="True"/>
+                                        <Condition Binding="{Binding IsPremiumUnlocked}" Value="True"/>
+                                    </MultiDataTrigger.Conditions>
+                                    <Setter Property="IsOpen" Value="True"/>
+                                </MultiDataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </ui:InfoBar.Style>
+                </ui:InfoBar>
 
-                        <!-- Premium Locked InfoBar (only shown for Store versions without premium) -->
-                        <ui:InfoBar Grid.Row="1" IsOpen="True" Severity="Warning" IsClosable="False" Margin="0,4,0,0">
-                            <ui:InfoBar.Style>
-                                <Style TargetType="ui:InfoBar">
-                                    <Setter Property="Visibility" Value="Collapsed"/>
-                                    <Style.Triggers>
-                                        <MultiDataTrigger>
-                                            <MultiDataTrigger.Conditions>
-                                                <Condition Binding="{Binding IsStoreVersion}" Value="True"/>
-                                                <Condition Binding="{Binding IsPremiumUnlocked}" Value="False"/>
-                                            </MultiDataTrigger.Conditions>
-                                            <Setter Property="Visibility" Value="Visible"/>
-                                        </MultiDataTrigger>
-                                    </Style.Triggers>
-                                </Style>
-                            </ui:InfoBar.Style>
-                            <StackPanel Orientation="Horizontal">
-                                <ui:Button Name="UnlockPremiumButton"
-                                    Click="UnlockPremiumButton_Click" 
-                                    Appearance="Primary"
-                                    Margin="4,0,0,8" FontSize="12">
-                                    <ui:Button.Content>
-                                        <StackPanel Orientation="Horizontal">
-                                            <TextBlock Text="{DynamicResource UnlockPremiumButton}" />
-                                            <TextBlock Text=" - " />
-                                            <TextBlock Text="{Binding PremiumPrice}" />
-                                        </StackPanel>
-                                    </ui:Button.Content>
-                                </ui:Button>
-                            </StackPanel>
-                        </ui:InfoBar>
-
-                        <!-- GitHub Version InfoBar -->
-                        <ui:InfoBar Grid.Row="1" Title="{DynamicResource PremiumGitHubMessage}" IsOpen="True" Severity="Informational" IsClosable="False" Visibility="{Binding IsStoreVersion, Converter={StaticResource BoolToCollapsedVisibleConverter}}" />
+                <!-- Premium Locked InfoBar (only shown for Store versions without premium) -->
+                <ui:InfoBar Grid.Row="1" IsOpen="True" Severity="Warning" IsClosable="False" Margin="0,4,0,0">
+                    <ui:InfoBar.Style>
+                        <Style TargetType="ui:InfoBar">
+                            <Setter Property="Visibility" Value="Collapsed"/>
+                            <Style.Triggers>
+                                <MultiDataTrigger>
+                                    <MultiDataTrigger.Conditions>
+                                        <Condition Binding="{Binding IsStoreVersion}" Value="True"/>
+                                        <Condition Binding="{Binding IsPremiumUnlocked}" Value="False"/>
+                                    </MultiDataTrigger.Conditions>
+                                    <Setter Property="Visibility" Value="Visible"/>
+                                </MultiDataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </ui:InfoBar.Style>
+                    <StackPanel Orientation="Horizontal">
+                        <ui:Button Name="UnlockPremiumButton"
+                            Click="UnlockPremiumButton_Click" 
+                            Appearance="Primary"
+                            Margin="4,0,0,8" FontSize="12">
+                            <ui:Button.Content>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{DynamicResource UnlockPremiumButton}" />
+                                    <TextBlock Text=" - " />
+                                    <TextBlock Text="{Binding PremiumPrice}" />
+                                </StackPanel>
+                            </ui:Button.Content>
+                        </ui:Button>
                     </StackPanel>
-                </ui:CardControl.Header>
-            </ui:CardControl>
+                </ui:InfoBar>
+
+                <!-- GitHub Version InfoBar -->
+                <ui:InfoBar Grid.Row="1" Title="{DynamicResource PremiumGitHubMessage}" IsOpen="True" Severity="Informational" IsClosable="False" Visibility="{Binding IsStoreVersion, Converter={StaticResource BoolToCollapsedVisibleConverter}}" />
+            </StackPanel>
 
             <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="0,12,0,0">
                 <ui:Anchor Content="{DynamicResource SponsorMeLink}" Icon="{ui:SymbolIcon Heart24}" NavigateUri="https://github.com/sponsors/unchihugo" Margin="0,0,4,0" />
@@ -343,13 +376,13 @@
         </Grid>
 
         <DockPanel LastChildFill="False" Margin="0,24,0,12">
-            <StackPanel Orientation="Horizontal" DockPanel.Dock="Bottom" HorizontalAlignment="Left">
-                <ui:SymbolIcon Symbol="Star24" Filled="True" Width="24" Height="24" FontSize="16" VerticalAlignment="Center" Foreground="Gold" />
-                <StackPanel Orientation="Vertical" VerticalAlignment="Center">
+            <Grid RowDefinitions="Auto" ColumnDefinitions="Auto, *, Auto">
+                <ui:SymbolIcon Grid.Column="0" Symbol="Star24" Filled="True" Width="24" Height="24" FontSize="16" VerticalAlignment="Center" Foreground="Gold" />
+                <StackPanel Grid.Column="1" Orientation="Vertical" VerticalAlignment="Center">
                     <TextBlock Text="{DynamicResource EnjoyingAppText}" HorizontalAlignment="Center" FontSize="12" Opacity="0.5" VerticalAlignment="Center" Margin="4,0,12,0" />
                 </StackPanel>
-                <ui:Anchor Appearance="Transparent" Content="{DynamicResource GitHubRepoLink}" Icon="{ui:SymbolIcon Open24}" NavigateUri="https://github.com/unchihugo/FluentFlyout" />
-            </StackPanel>
+                <ui:Anchor Grid.Column="2" Appearance="Transparent" Content="{DynamicResource GitHubRepoLink}" Icon="{ui:SymbolIcon Open24}" NavigateUri="https://github.com/unchihugo/FluentFlyout" />
+            </Grid>
         </DockPanel>
     </StackPanel>
 </Page>

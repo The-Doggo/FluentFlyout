@@ -14,6 +14,14 @@
       Foreground="{DynamicResource TextFillColorPrimaryBrush}"
       d:Background="White">
 
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Resources/Styles/TextBlockWordWrap.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
+
     <StackPanel MaxWidth="1000" Margin="16">
         <TextBlock Text="{DynamicResource TaskbarWidgetCustomizationTitle}" FontSize="24" FontWeight="SemiBold" Margin="0,0,0,20" />
         <Grid>
@@ -33,14 +41,14 @@
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
-            <StackPanel Orientation="Horizontal" Margin="0,0,0,24">
-                <Border CornerRadius="10" ClipToBounds="True" Width="164" Height="98">
+            <Grid Margin="0,0,0,24" RowDefinitions="Auto" ColumnDefinitions="Auto, *">
+                <Border Grid.Column="0" VerticalAlignment="Top" HorizontalAlignment="Left" CornerRadius="10" ClipToBounds="True" Width="164" Height="98">
                     <Border.Background>
                         <ImageBrush ImageSource="/Resources/FluentFlyoutDemo9.1.png" Stretch="UniformToFill" />
                     </Border.Background>
                 </Border>
-                <TextBlock FontSize="14" FontWeight="Regular" HorizontalAlignment="Stretch" Opacity="0.75" Margin="12,0,0,0" MaxWidth="450" TextWrapping="WrapWithOverflow" Text="{DynamicResource TaskbarWidgetDescription}" />
-            </StackPanel>
+                <TextBlock Grid.Column="1" FontSize="14" FontWeight="Regular" HorizontalAlignment="Left" Opacity="0.75" Margin="12,0,0,0" MaxWidth="450" TextWrapping="WrapWithOverflow" Text="{DynamicResource TaskbarWidgetDescription}" />
+            </Grid>
 
             <!-- Premium Status InfoBar (only shown for Store versions) -->
             <ui:InfoBar Grid.Row="1" Title="{DynamicResource PremiumUnlockedMessage}" Severity="Success" IsClosable="True" Margin="0,0,0,3">
@@ -101,10 +109,11 @@
                 <ui:CardControl Grid.Row="2" Icon="{ui:SymbolIcon TextboxAlignBottom24}" Margin="0,0,0,24">
                 <ui:CardControl.Header>
                     <StackPanel Orientation="Vertical">
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="{DynamicResource TaskbarWidgetEnabledTitle}" FontSize="14" FontWeight="Regular" VerticalAlignment="Center" />
-                            <fluentflyoutcontrols:AccentBadge Margin="6,0,0,0" />
-                        </StackPanel>
+                        <fluentflyoutcontrols:TextBlockInline Text="{DynamicResource TaskbarWidgetEnabledTitle}" FontSize="14" FontWeight="Regular" VerticalAlignment="Center">
+                            <fluentflyoutcontrols:TextBlockInline.InlineContent>
+                                <fluentflyoutcontrols:AccentBadge Margin="6,0,0,0" />
+                            </fluentflyoutcontrols:TextBlockInline.InlineContent>
+                        </fluentflyoutcontrols:TextBlockInline>
                         <TextBlock Text="{DynamicResource TaskbarWidgetEnabledDescription}" FontSize="12" Opacity="0.5" />
                     </StackPanel>
                 </ui:CardControl.Header>
