@@ -18,7 +18,6 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/Resources/Styles/TextBoxWordWrap.xaml" />
-                <ResourceDictionary Source="/Resources/Styles/CustomCardExpander.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Page.Resources>

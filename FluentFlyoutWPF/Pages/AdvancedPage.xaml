@@ -17,7 +17,7 @@
     <Page.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="/Resources/Styles/TextBlockWordWrap.xaml"/>
+                <ResourceDictionary Source="/Resources/Styles/TextBlockWordWrap.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Page.Resources>
@@ -26,7 +26,7 @@
         <TextBlock Text="{DynamicResource AdvancedSettingsTitle}" FontSize="24" FontWeight="SemiBold" Margin="0,0,0,24" />
         <StackPanel>
             <TextBlock Text="{DynamicResource SystemSettingsTitle}" FontSize="14" FontWeight="SemiBold" Margin="0,0,0,6" />
-            <ui:CardExpander Icon="{ui:SymbolIcon Wrench24}" ContentPadding="6" Margin="0,0,0,3">
+            <ui:CardExpander Style="{StaticResource WinUi3ExpanderStyle}" Icon="{ui:SymbolIcon Wrench24}" Margin="0,0,0,3">
                 <ui:CardExpander.Header>
                     <StackPanel Orientation="Vertical">
                         <TextBlock Text="{DynamicResource AnimationSettingsTitle}" FontSize="14" FontWeight="Regular" VerticalAlignment="Center" />
@@ -34,7 +34,7 @@
                     </StackPanel>
                 </ui:CardExpander.Header>
                 <StackPanel>
-                    <ui:CardControl Icon="{ui:SymbolIcon TopSpeed24}" Margin="0,0,0,3">
+                    <ui:CardControl Style="{StaticResource WinUi3ExpanderCardControlStyle}" Icon="{ui:SymbolIcon TopSpeed24}">
                         <ui:CardControl.Header>
                             <StackPanel Orientation="Vertical">
                                 <TextBlock Text="{DynamicResource AnimationDurationScaleTitle}" FontSize="14" FontWeight="Regular" VerticalAlignment="Center" />
@@ -52,7 +52,7 @@
                             </ComboBox>
                         </StackPanel>
                     </ui:CardControl>
-                    <ui:CardControl Icon="{ui:SymbolIcon BezierCurveSquare12}" Margin="0,0,0,3">
+                    <ui:CardControl Style="{StaticResource WinUi3ExpanderCardControlStyle}" Icon="{ui:SymbolIcon BezierCurveSquare12}">
                         <ui:CardControl.Header>
                             <StackPanel Orientation="Vertical">
                                 <TextBlock Text="{DynamicResource AnimationEasingStyleTitle}" FontSize="14" FontWeight="Regular" VerticalAlignment="Center" />
@@ -68,7 +68,7 @@
                             </ComboBox>
                         </StackPanel>
                     </ui:CardControl>
-                    <ui:InfoBar Title="{DynamicResource NativeExperienceInfo}" IsOpen="True" Severity="Informational" IsClosable="False" />
+                    <ui:InfoBar Style="{StaticResource WinUi3ExpanderInfoBarBottomStyle}" Title="{DynamicResource NativeExperienceInfo}" IsOpen="True" Severity="Informational" IsClosable="False" />
                 </StackPanel>
             </ui:CardExpander>
             <ui:CardControl Icon="{ui:SymbolIcon ArrowCounterclockwise24}" Margin="0,0,0,76">

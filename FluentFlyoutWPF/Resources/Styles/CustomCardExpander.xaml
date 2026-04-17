@@ -50,7 +50,7 @@
         <Setter Property="CornerRadius" Value="0,0,4,4" />
     </Style>
 
-    <Style x:Key="WinUi3ExpanderInfoBarBottomStyle" TargetType="{x:Type ui:CardControl}" BasedOn="{StaticResource WinUi3ExpanderInfoBarStyle}">
+    <Style x:Key="WinUi3ExpanderInfoBarBottomStyle" TargetType="{x:Type ui:InfoBar}" BasedOn="{StaticResource WinUi3ExpanderInfoBarStyle}">
         <Setter Property="BorderThickness" Value="0" />
         <Setter Property="Border.CornerRadius" Value="0,0,4,4" />
     </Style>
