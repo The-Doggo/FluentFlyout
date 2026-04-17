@@ -17,11 +17,7 @@
     <Page.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-<<<<<<< HEAD
                 <ResourceDictionary Source="/Resources/Styles/TextBlockWordWrap.xaml"/>
-=======
-                <ResourceDictionary Source="/Resources/Styles/TextBoxWordWrap.xaml"/>
->>>>>>> d870c54 (squash and rebase of dev to clean up)
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Page.Resources>
@@ -100,11 +96,7 @@
                     <StackPanel Orientation="Vertical">
                         <fluentflyoutcontrols:TextBlockInline Text="{DynamicResource LockKeysCursorUITitle}" FontSize="14" FontWeight="Regular" VerticalAlignment="Center">
                             <fluentflyoutcontrols:TextBlockInline.InlineContent>
-<<<<<<< HEAD
-                            <ui:InfoBadge Value=" NEW " FontWeight="Medium" FontSize="10" Margin="6,-2,0,-2" Severity="Success" />
-=======
-                                <ui:InfoBadge Value=" NEW " FontWeight="Medium" FontSize="10" Margin="6,0,0,0" Severity="Success" />
->>>>>>> d870c54 (squash and rebase of dev to clean up)
+                                <ui:InfoBadge Value=" NEW " FontWeight="Medium" FontSize="10" Margin="6,-2,0,-2" Severity="Success" />
                             </fluentflyoutcontrols:TextBlockInline.InlineContent>
                         </fluentflyoutcontrols:TextBlockInline>
                         <TextBlock Text="{DynamicResource LockKeysCursorUIDescription}" FontSize="12" Opacity="0.5" />
