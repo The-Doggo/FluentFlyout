@@ -40,15 +40,19 @@
     <Style x:Key="WinUi3ExpanderInfoBarStyle" TargetType="{x:Type ui:InfoBar}" BasedOn="{StaticResource {x:Type ui:InfoBar}}">
         <!-- Make sure to remove margins/padding of child elements -->
         <Setter Property="Margin" Value="0" />
-        <Setter Property="Padding" Value="58,10,44,10" />
         <Setter Property="BorderThickness" Value="0,0,0,1" />
-        <Setter Property="Background" Value="{DynamicResource CardBackgroundFillColorDefaultBrush}" />
-        <Setter Property="CornerRadius" Value="0" />
+        <Setter Property="Background" Value="{DynamicResource ControlFillColorTertiaryBrush}" />
+        <Setter Property="Border.CornerRadius" Value="0" />
     </Style>
 
     <Style x:Key="WinUi3ExpanderCardControlBottomStyle" TargetType="{x:Type ui:CardControl}" BasedOn="{StaticResource WinUi3ExpanderCardControlStyle}">
         <Setter Property="BorderThickness" Value="0" />
         <Setter Property="CornerRadius" Value="0,0,4,4" />
+    </Style>
+
+    <Style x:Key="WinUi3ExpanderInfoBarBottomStyle" TargetType="{x:Type ui:CardControl}" BasedOn="{StaticResource WinUi3ExpanderInfoBarStyle}">
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="Border.CornerRadius" Value="0,0,4,4" />
     </Style>
 
 </ResourceDictionary>

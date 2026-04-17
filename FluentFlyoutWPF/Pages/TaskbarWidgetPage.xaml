@@ -136,30 +136,17 @@
                             <TextBlock Text="{DynamicResource TaskbarWidgetClickActionDescription}" FontSize="12" Opacity="0.5" />
                         </StackPanel>
                         <!--<controls:ToggleSwitch Style="{StaticResource WinUi3ExpanderToggleSwitchStyle}" IsChecked="{Binding TaskbarWidgetClickAction, Mode=TwoWay}" IsEnabled="{Binding IsPremiumUnlocked}" />-->
-                        <!--<ComboBox Style="{StaticResource WinUi3ExpanderComboBoxStyle}" IsEnabled="{Binding IsPremiumUnlocked}">
+                        <ComboBox Style="{StaticResource WinUi3ExpanderComboBoxStyle}" IsEnabled="{Binding IsPremiumUnlocked}">
                             <ComboBoxItem Content="{DynamicResource PositionBottomLeft}" />
                             <ComboBoxItem Content="{DynamicResource PositionBottomCenter}" />
                             <ComboBoxItem Content="{DynamicResource PositionBottomRight}" />
-                        </ComboBox>-->
-                        <ui:Button Grid.Column="1" Style="{StaticResource WinUi3ExpanderButtonStyle}" Content="Button" IsEnabled="{Binding IsPremiumUnlocked}" />
+                        </ComboBox>
+                        <!--<ui:Button Grid.Column="1" Style="{StaticResource WinUi3ExpanderButtonStyle}" Content="Button" IsEnabled="{Binding IsPremiumUnlocked}" />-->
                     </Grid>
                 </ui:CardExpander.Header>
-                <Border CornerRadius="0,0,4,4" ClipToBounds="True">
-                    <Border.OpacityMask>
-                        <VisualBrush>
-                            <VisualBrush.Visual>
-                                <Border 
-                                    Background="Black"
-                                    SnapsToDevicePixels="True"
-                                    CornerRadius="{Binding CornerRadius, RelativeSource={RelativeSource AncestorType=Border}}"
-                                    Width="{Binding ActualWidth, RelativeSource={RelativeSource AncestorType=Border}}"
-                                    Height="{Binding ActualHeight, RelativeSource={RelativeSource AncestorType=Border}}"
-                                    />
-                            </VisualBrush.Visual>
-                        </VisualBrush>
-                    </Border.OpacityMask>
                 <StackPanel>
-                    <ui:CardControl Style="{StaticResource WinUi3ExpanderCardControlStyle}">
+                    <ui:InfoBar Style="{StaticResource WinUi3ExpanderInfoBarStyle}" Title="{DynamicResource NativeExperienceInfo}" IsOpen="True" Severity="Informational" IsClosable="False" />
+                    <ui:CardControl Style="{StaticResource WinUi3ExpanderCardControlBottomStyle}">
                         <ui:CardControl.Header>
                             <CheckBox IsChecked="{Binding TaskbarWidgetClickActionMerge, Mode=TwoWay}" Padding="0" IsEnabled="{Binding IsPremiumUnlocked}">
                                 <StackPanel Orientation="Vertical">
@@ -170,7 +157,6 @@
                         </ui:CardControl.Header>
                     </ui:CardControl>
                 </StackPanel>
-                </Border>
             </ui:CardExpander>
 
             <ui:InfoBar Grid.Row="5" Title="{DynamicResource TaskbarWidgetVisualIssuesWarning}" IsOpen="True" Severity="Informational" IsClosable="False" Margin="0,0,0,3" />
