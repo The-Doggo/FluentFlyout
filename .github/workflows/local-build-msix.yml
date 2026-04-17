@@ -1,4 +1,4 @@
-name: Build and Package MSIX
+name: Build and Package MSIX (local)
 
 on:
   workflow_dispatch:
@@ -14,7 +14,7 @@ jobs:
     
     strategy:
       matrix:
-        configuration: ["GitHub Release", "Release"]
+        configuration: ["GitHub Release"] #, "Release"]
 
     env:
       SOLUTION_PATH: FluentFlyout.sln
@@ -61,11 +61,21 @@ jobs:
             Where-Object { $_.Name -like '*_Test' } | Select-Object -First 1
           Move-Item $testFolder.FullName "$outDir\SystemFiles"
           Copy-Item ".github\build-files\FluentFlyout_Installer.bat" "$outDir\"
-          Copy-Item ".github\build-files\FluentFlyout_Updater.bat" "$outDir\"
           Copy-Item ".github\build-files\README.txt" "$outDir\"
 
-      - name: Upload artifact
-        uses: actions/upload-artifact@v7
-        with:
-          name: FluentFlyout_${{ env.APP_VERSION }}_${{ env.PLATFORM }}_${{ matrix.configuration == 'GitHub Release' && 'Installer' || 'Release' }}
-          path: InstallerOutput\
+      - name: Prepare local output folder
+        shell: powershell
+        run: |
+          # Normalize configuration name for folder usage
+          $config = "${{ matrix.configuration }}"
+          $safeConfig = $config -replace '\s+', ''
+
+          # Build versioned folder name
+          $dest = "$env:USERPROFILE\Downloads\FluentFlyout_$env:APP_VERSION`_$safeConfig"
+
+          New-Item -ItemType Directory -Force -Path $dest | Out-Null
+
+          # Copy installer output
+          Copy-Item -Recurse -Force "InstallerOutput\*" $dest
+
+          Write-Host "Build saved to: $dest"

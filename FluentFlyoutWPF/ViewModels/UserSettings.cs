@@ -391,10 +391,10 @@ public partial class UserSettings : ObservableObject
     }
 
     /// <summary>
-    /// Gets or sets a value indicating whether the taskbar widget is clickable
+    /// Gets or sets a value indicating whether the taskbar widget is clickable and the associated action. 0: none (disabled), 1: open media flyout (enabled), 2: toggle play/pause (enabled)
     /// </summary>
     [ObservableProperty]
-    public partial bool TaskbarWidgetClickable { get; set; }
+    public partial int TaskbarWidgetClickAction { get; set; }
 
     /// <summary>
     /// Gets or sets a value indication whether the taskbar widget background should have a blur effect
@@ -579,7 +579,7 @@ public partial class UserSettings : ObservableObject
         TaskbarWidgetPosition = 0;
         TaskbarWidgetPadding = true;
         TaskbarWidgetManualPadding = 0;
-        TaskbarWidgetClickable = true;
+        TaskbarWidgetClickAction = 1;
         TaskbarWidgetBackgroundBlur = false;
         TaskbarWidgetHideCompletely = false;
         TaskbarWidgetControlsEnabled = false;
@@ -670,7 +670,7 @@ public partial class UserSettings : ObservableObject
         UpdateTaskbar();
     }
 
-    partial void OnTaskbarWidgetClickableChanged(bool oldValue, bool newValue)
+    partial void OnTaskbarWidgetClickActionChanged(int oldValue, int newValue)
     {
         if (oldValue == newValue || _initializing) return;
         UpdateTaskbar();

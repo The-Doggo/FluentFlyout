@@ -17,8 +17,46 @@
     <Page.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="/Resources/Styles/TextBlockWordWrap.xaml"/>
+                <ResourceDictionary Source="/Resources/Styles/TextBoxWordWrap.xaml"/>
             </ResourceDictionary.MergedDictionaries>
+
+            <Style x:Key="WinUi3ExpanderStyle" TargetType="{x:Type ui:CardExpander}" BasedOn="{StaticResource {x:Type ui:CardExpander}}">
+                <Setter Property="ContentPadding" Value="0" />
+                <Setter Property="Margin" Value="0,0,0,12" />
+                <Setter Property="Background" Value="{DynamicResource CardBackgroundFillColorDefaultBrush}" />
+                <Style.Resources>
+                    <SolidColorBrush x:Key="CardBackground" Color="Transparent" />
+                </Style.Resources>
+            </Style>
+
+            <Style x:Key="WinUi3ExpanderToggleSwitchStyle" TargetType="{x:Type controls:ToggleSwitch}" BasedOn="{StaticResource {x:Type controls:ToggleSwitch}}">
+                <Setter Property="Margin" Value="14,0,14,0" />
+                <Setter Property="HorizontalAlignment" Value="Right" />
+            </Style>
+
+            <Style x:Key="WinUi3ExpanderComboBoxStyle" TargetType="{x:Type ComboBox}" BasedOn="{StaticResource {x:Type ComboBox}}">
+                <Setter Property="Margin" Value="14,0,14,0" />
+                <Setter Property="HorizontalAlignment" Value="Right" />
+            </Style>
+
+            <Style x:Key="WinUi3ExpanderButtonStyle" TargetType="{x:Type ui:Button}" BasedOn="{StaticResource {x:Type ui:Button}}">
+                <Setter Property="Margin" Value="14,0,14,0" />
+                <Setter Property="HorizontalAlignment" Value="Right" />
+            </Style>
+
+            <Style x:Key="WinUi3ExpanderCardControlStyle" TargetType="{x:Type ui:CardControl}" BasedOn="{StaticResource {x:Type ui:CardControl}}">
+                <!-- Make sure to remove margins/padding of child elements -->
+                <Setter Property="Margin" Value="0" />
+                <Setter Property="Padding" Value="58,10,44,10" />
+                <Setter Property="BorderThickness" Value="0,0,0,1" />
+                <Setter Property="Background" Value="{DynamicResource CardBackgroundFillColorDefaultBrush}" />
+                <Setter Property="CornerRadius" Value="0" />
+            </Style>
+
+            <Style x:Key="WinUi3ExpanderCardControlBottomStyle" TargetType="{x:Type ui:CardControl}" BasedOn="{StaticResource WinUi3ExpanderCardControlStyle}">
+                <Setter Property="BorderThickness" Value="0" />
+                <Setter Property="CornerRadius" Value="0,0,4,4" />
+            </Style>
         </ResourceDictionary>
     </Page.Resources>
 
@@ -26,6 +64,8 @@
         <TextBlock Text="{DynamicResource TaskbarWidgetCustomizationTitle}" FontSize="24" FontWeight="SemiBold" Margin="0,0,0,20" />
         <Grid>
             <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
@@ -119,9 +159,44 @@
                 </ui:CardControl.Header>
                 <controls:ToggleSwitch IsChecked="{Binding TaskbarWidgetEnabled, Mode=TwoWay}" IsEnabled="{Binding IsPremiumUnlocked}" />
             </ui:CardControl>
-            <ui:InfoBar Grid.Row="3" Title="{DynamicResource TaskbarWidgetVisualIssuesWarning}" IsOpen="True" Severity="Informational" IsClosable="False" Margin="0,0,0,3" />
 
-            <ui:CardControl Grid.Row="4" Icon="{ui:SymbolIcon ArrowMove24}" Margin="0,0,0,3">
+            <!-- Click Action settings -->
+            <ui:CardExpander Grid.Row="4" Style="{StaticResource WinUi3ExpanderStyle}" Icon="{ui:SymbolIcon CursorClick24}">
+                <ui:CardExpander.Header>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <StackPanel Grid.Column="0" Orientation="Vertical">
+                            <TextBlock Text="{DynamicResource TaskbarWidgetClickActionTitle}" FontSize="14" FontWeight="Regular" VerticalAlignment="Center" />
+                            <TextBlock Text="{DynamicResource TaskbarWidgetClickActionDescription}" FontSize="12" Opacity="0.5" />
+                        </StackPanel>
+                        <!--<controls:ToggleSwitch Style="{StaticResource WinUi3ExpanderToggleSwitchStyle}" IsChecked="{Binding TaskbarWidgetClickAction, Mode=TwoWay}" IsEnabled="{Binding IsPremiumUnlocked}" />-->
+                        <!--<ComboBox Style="{StaticResource WinUi3ExpanderComboBoxStyle}" IsEnabled="{Binding IsPremiumUnlocked}">
+                            <ComboBoxItem Content="{DynamicResource PositionBottomLeft}" />
+                            <ComboBoxItem Content="{DynamicResource PositionBottomCenter}" />
+                            <ComboBoxItem Content="{DynamicResource PositionBottomRight}" />
+                        </ComboBox>-->
+                        <ui:Button Grid.Column="1" Style="{StaticResource WinUi3ExpanderButtonStyle}" Content="Button" IsEnabled="{Binding IsPremiumUnlocked}" />
+                    </Grid>
+                </ui:CardExpander.Header>
+                <StackPanel>
+                    <ui:CardControl Style="{StaticResource WinUi3ExpanderCardControlBottomStyle}">
+                        <ui:CardControl.Header>
+                            <CheckBox IsChecked="{Binding TaskbarWidgetClickActionMerge, Mode=TwoWay}" Padding="0" IsEnabled="{Binding IsPremiumUnlocked}">
+                                <StackPanel Orientation="Vertical">
+                                    <TextBlock Text="{DynamicResource TaskbarWidgetClickActionMergeTitle}" FontSize="14" FontWeight="Regular" VerticalAlignment="Center" />
+                                    <TextBlock Text="{DynamicResource TaskbarWidgetClickActionMergeDescription}" FontSize="12" Opacity="0.5" />
+                                </StackPanel>
+                            </CheckBox>
+                        </ui:CardControl.Header>
+                    </ui:CardControl>
+                </StackPanel>
+            </ui:CardExpander>
+
+            <ui:InfoBar Grid.Row="5" Title="{DynamicResource TaskbarWidgetVisualIssuesWarning}" IsOpen="True" Severity="Informational" IsClosable="False" Margin="0,0,0,3" />
+            <ui:CardControl Grid.Row="6" Icon="{ui:SymbolIcon ArrowMove24}" Margin="0,0,0,3">
                 <ui:CardControl.Header>
                     <StackPanel Orientation="Vertical">
                         <TextBlock Text="{DynamicResource TaskbarWidgetPosition}" FontSize="14" FontWeight="Regular" VerticalAlignment="Center" />
@@ -133,7 +208,7 @@
                     <ComboBoxItem Content="{DynamicResource PositionBottomRight}" />
                 </ComboBox>
             </ui:CardControl>
-            <ui:CardControl Grid.Row="5" Icon="{ui:SymbolIcon ProjectionScreen24}" Margin="0,0,0,3">
+            <ui:CardControl Grid.Row="7" Icon="{ui:SymbolIcon ProjectionScreen24}" Margin="0,0,0,3">
                 <ui:CardControl.Header>
                     <StackPanel Orientation="Vertical">
                         <TextBlock Text="{DynamicResource TaskbarWidgetSelectedMonitorTitle}" FontSize="14" FontWeight="Regular" VerticalAlignment="Center" />
@@ -144,7 +219,7 @@
             </ui:CardControl>
 
             <!-- Padding settings -->
-            <ui:CardExpander Grid.Row="6" Icon="{ui:SymbolIcon Wrench24}" ContentPadding="6" Margin="0,0,0,12">
+            <ui:CardExpander Grid.Row="9" Style="{StaticResource WinUi3ExpanderStyle}" Icon="{ui:SymbolIcon Wrench24}">
                 <ui:CardExpander.Header>
                     <StackPanel Orientation="Vertical">
                         <TextBlock Text="{DynamicResource TaskbarWidgetPaddingSettingsTitle}" FontSize="14" FontWeight="Regular" VerticalAlignment="Center" />
@@ -152,7 +227,7 @@
                     </StackPanel>
                 </ui:CardExpander.Header>
                 <StackPanel>
-                    <ui:CardControl Grid.Row="5" Icon="{ui:SymbolIcon PaddingRight24}" Margin="0,0,0,3">
+                    <ui:CardControl Grid.Row="8" Style="{StaticResource WinUi3ExpanderCardControlStyle}" Icon="{ui:SymbolIcon PaddingRight24}">
                         <ui:CardControl.Header>
                             <StackPanel Orientation="Vertical">
                                 <TextBlock Text="{DynamicResource TaskbarWidgetPaddingTitle}" FontSize="14" FontWeight="Regular" VerticalAlignment="Center" />
@@ -183,7 +258,7 @@
                             </controls:ToggleSwitch.Style>
                         </controls:ToggleSwitch>
                     </ui:CardControl>
-                    <ui:CardControl Icon="{ui:SymbolIcon ArrowFit20}" Margin="0,0,0,0">
+                    <ui:CardControl Style="{StaticResource WinUi3ExpanderCardControlBottomStyle}" Icon="{ui:SymbolIcon ArrowFit20}">
                         <ui:CardControl.Header>
                             <StackPanel Orientation="Vertical">
                                 <TextBlock Text="{DynamicResource TaskbarWidgetManualPaddingTitle}" FontSize="14" FontWeight="Regular" VerticalAlignment="Center" />
@@ -198,7 +273,7 @@
                 </StackPanel>
             </ui:CardExpander>
 
-            <ui:CardControl Grid.Row="7" Icon="{ui:SymbolIcon ColorBackground24}" Margin="0,0,0,3">
+            <ui:CardControl Grid.Row="10" Icon="{ui:SymbolIcon ColorBackground24}" Margin="0,0,0,3">
                 <ui:CardControl.Header>
                     <StackPanel Orientation="Vertical">
                         <TextBlock Text="{DynamicResource TaskbarWidgetBackgroundBlurTitle}" FontSize="14" FontWeight="Regular" VerticalAlignment="Center" />
@@ -207,7 +282,7 @@
                 </ui:CardControl.Header>
                 <controls:ToggleSwitch IsChecked="{Binding TaskbarWidgetBackgroundBlur, Mode=TwoWay}" IsEnabled="{Binding IsPremiumUnlocked}" />
             </ui:CardControl>
-            <ui:CardControl Grid.Row="8" Icon="{ui:SymbolIcon EyeOff24}" Margin="0,0,0,3">
+            <ui:CardControl Grid.Row="11" Icon="{ui:SymbolIcon EyeOff24}" Margin="0,0,0,3">
                 <ui:CardControl.Header>
                     <StackPanel Orientation="Vertical">
                         <TextBlock Text="{DynamicResource TaskbarWidgetHideCompletelyTitle}" FontSize="14" FontWeight="Regular" VerticalAlignment="Center" />
@@ -216,7 +291,7 @@
                 </ui:CardControl.Header>
                 <controls:ToggleSwitch IsChecked="{Binding TaskbarWidgetHideCompletely, Mode=TwoWay}" IsEnabled="{Binding IsPremiumUnlocked}" />
             </ui:CardControl>
-            <ui:CardControl Grid.Row="9" Icon="{ui:SymbolIcon EyeLines24}" Margin="0,0,0,12">
+            <ui:CardControl Grid.Row="12" Icon="{ui:SymbolIcon EyeLines24}" Margin="0,0,0,12">
                 <ui:CardControl.Header>
                     <StackPanel Orientation="Vertical">
                         <TextBlock Text="{DynamicResource TaskbarWidgetAutoHideTitle}" FontSize="14" FontWeight="Regular" VerticalAlignment="Center" />
@@ -225,7 +300,7 @@
                 </ui:CardControl.Header>
                 <controls:ToggleSwitch IsChecked="{Binding TaskbarWidgetAutoHide, Mode=TwoWay}" IsEnabled="{Binding IsPremiumUnlocked}" />
             </ui:CardControl>
-            <ui:CardControl Grid.Row="10" Icon="{ui:SymbolIcon VideoPlayPause24}" Margin="0,0,0,3">
+            <ui:CardControl Grid.Row="13" Icon="{ui:SymbolIcon VideoPlayPause24}" Margin="0,0,0,3">
                 <ui:CardControl.Header>
                     <StackPanel Orientation="Vertical">
                         <TextBlock Text="{DynamicResource TaskbarWidgetControlsTitle}" FontSize="14" FontWeight="Regular" VerticalAlignment="Center" />
@@ -234,7 +309,7 @@
                 </ui:CardControl.Header>
                 <controls:ToggleSwitch IsChecked="{Binding TaskbarWidgetControlsEnabled, Mode=TwoWay}" IsEnabled="{Binding IsPremiumUnlocked}" />
             </ui:CardControl>
-            <ui:CardControl Grid.Row="11" Icon="{ui:SymbolIcon ArrowMove24}" Margin="0,0,0,12">
+            <ui:CardControl Grid.Row="14" Icon="{ui:SymbolIcon ArrowMove24}" Margin="0,0,0,12">
                 <ui:CardControl.Header>
                     <StackPanel Orientation="Vertical">
                         <TextBlock Text="{DynamicResource TaskbarWidgetControlsPositionTitle}" FontSize="14" FontWeight="Regular" VerticalAlignment="Center" />
@@ -246,7 +321,7 @@
                     <ComboBoxItem Content="{DynamicResource PositionRight}" />
                 </ComboBox>
             </ui:CardControl>
-            <ui:CardControl Grid.Row="12" Icon="{ui:SymbolIcon Wand24}" Margin="0,0,0,76">
+            <ui:CardControl Grid.Row="15" Icon="{ui:SymbolIcon Wand24}" Margin="0,0,0,76">
                 <ui:CardControl.Header>
                     <StackPanel Orientation="Vertical">
                         <TextBlock Text="{DynamicResource TaskbarWidgetAnimatedTitle}" FontSize="14" FontWeight="Regular" VerticalAlignment="Center" />

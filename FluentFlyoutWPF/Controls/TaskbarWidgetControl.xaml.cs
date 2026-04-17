@@ -103,7 +103,7 @@ public partial class TaskbarWidgetControl : UserControl
 
     private void Grid_MouseEnter(object sender, MouseEventArgs e)
     {
-        if (!SettingsManager.Current.TaskbarWidgetClickable || (string.IsNullOrEmpty(SongTitle.Text) && string.IsNullOrEmpty(SongArtist.Text))) return;
+        if ((SettingsManager.Current.TaskbarWidgetClickAction == 0) || (SettingsManager.Current.TaskbarWidgetControlsEnabled && PlayPauseButton.IsHitTestVisible) || (string.IsNullOrEmpty(SongTitle.Text) && string.IsNullOrEmpty(SongArtist.Text))) return;
 
         SolidColorBrush targetBackgroundBrush;
         // hover effects with animations, hard-coded colors because I can't find the resource brushes
@@ -146,7 +146,7 @@ public partial class TaskbarWidgetControl : UserControl
 
     private void Grid_MouseLeave(object sender, MouseEventArgs e)
     {
-        if (!SettingsManager.Current.TaskbarWidgetClickable || (string.IsNullOrEmpty(SongTitle.Text) && string.IsNullOrEmpty(SongArtist.Text))) return;
+        if ((SettingsManager.Current.TaskbarWidgetClickAction == 0) || (SettingsManager.Current.TaskbarWidgetControlsEnabled && PlayPauseButton.IsHitTestVisible) || (string.IsNullOrEmpty(SongTitle.Text) && string.IsNullOrEmpty(SongArtist.Text))) return;
 
         // Animate back to transparent
         var backgroundAnimation = new ColorAnimation
@@ -171,10 +171,21 @@ public partial class TaskbarWidgetControl : UserControl
 
     private void Grid_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
     {
-        if (!SettingsManager.Current.TaskbarWidgetClickable || _mainWindow == null) return;
+        if (_mainWindow == null) return;
 
-        // toggle main flyout when clicked
-        _mainWindow.ShowMediaFlyout(toggleMode: true, forceShow: true);
+        switch (SettingsManager.Current.TaskbarWidgetClickAction)
+        {
+            case 0: // none
+                return;
+            case 1: // toggle main flyout when clicked
+                 _mainWindow.ShowMediaFlyout(toggleMode: false, forceShow: true);
+                break;
+            case 2: // toggle play/pause
+                PlayPauseButton.RaiseEvent(new RoutedEventArgs(Wpf.Ui.Controls.Button.ClickEvent));
+                break;
+            default:
+                return;
+        }
     }
 
     public (double logicalWidth, double logicalHeight) CalculateSize(double dpiScale)
