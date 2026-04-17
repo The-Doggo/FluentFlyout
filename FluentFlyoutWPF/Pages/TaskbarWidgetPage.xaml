@@ -17,46 +17,9 @@
     <Page.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="/Resources/Styles/TextBoxWordWrap.xaml"/>
+                <ResourceDictionary Source="/Resources/Styles/TextBoxWordWrap.xaml" />
+                <ResourceDictionary Source="/Resources/Styles/CustomCardExpander.xaml" />
             </ResourceDictionary.MergedDictionaries>
-
-            <Style x:Key="WinUi3ExpanderStyle" TargetType="{x:Type ui:CardExpander}" BasedOn="{StaticResource {x:Type ui:CardExpander}}">
-                <Setter Property="ContentPadding" Value="0" />
-                <Setter Property="Margin" Value="0,0,0,12" />
-                <Setter Property="Background" Value="{DynamicResource CardBackgroundFillColorDefaultBrush}" />
-                <Style.Resources>
-                    <SolidColorBrush x:Key="CardBackground" Color="Transparent" />
-                </Style.Resources>
-            </Style>
-
-            <Style x:Key="WinUi3ExpanderToggleSwitchStyle" TargetType="{x:Type controls:ToggleSwitch}" BasedOn="{StaticResource {x:Type controls:ToggleSwitch}}">
-                <Setter Property="Margin" Value="14,0,14,0" />
-                <Setter Property="HorizontalAlignment" Value="Right" />
-            </Style>
-
-            <Style x:Key="WinUi3ExpanderComboBoxStyle" TargetType="{x:Type ComboBox}" BasedOn="{StaticResource {x:Type ComboBox}}">
-                <Setter Property="Margin" Value="14,0,14,0" />
-                <Setter Property="HorizontalAlignment" Value="Right" />
-            </Style>
-
-            <Style x:Key="WinUi3ExpanderButtonStyle" TargetType="{x:Type ui:Button}" BasedOn="{StaticResource {x:Type ui:Button}}">
-                <Setter Property="Margin" Value="14,0,14,0" />
-                <Setter Property="HorizontalAlignment" Value="Right" />
-            </Style>
-
-            <Style x:Key="WinUi3ExpanderCardControlStyle" TargetType="{x:Type ui:CardControl}" BasedOn="{StaticResource {x:Type ui:CardControl}}">
-                <!-- Make sure to remove margins/padding of child elements -->
-                <Setter Property="Margin" Value="0" />
-                <Setter Property="Padding" Value="58,10,44,10" />
-                <Setter Property="BorderThickness" Value="0,0,0,1" />
-                <Setter Property="Background" Value="{DynamicResource CardBackgroundFillColorDefaultBrush}" />
-                <Setter Property="CornerRadius" Value="0" />
-            </Style>
-
-            <Style x:Key="WinUi3ExpanderCardControlBottomStyle" TargetType="{x:Type ui:CardControl}" BasedOn="{StaticResource WinUi3ExpanderCardControlStyle}">
-                <Setter Property="BorderThickness" Value="0" />
-                <Setter Property="CornerRadius" Value="0,0,4,4" />
-            </Style>
         </ResourceDictionary>
     </Page.Resources>
 
@@ -181,8 +144,22 @@
                         <ui:Button Grid.Column="1" Style="{StaticResource WinUi3ExpanderButtonStyle}" Content="Button" IsEnabled="{Binding IsPremiumUnlocked}" />
                     </Grid>
                 </ui:CardExpander.Header>
+                <Border CornerRadius="0,0,4,4" ClipToBounds="True">
+                    <Border.OpacityMask>
+                        <VisualBrush>
+                            <VisualBrush.Visual>
+                                <Border 
+                                    Background="Black"
+                                    SnapsToDevicePixels="True"
+                                    CornerRadius="{Binding CornerRadius, RelativeSource={RelativeSource AncestorType=Border}}"
+                                    Width="{Binding ActualWidth, RelativeSource={RelativeSource AncestorType=Border}}"
+                                    Height="{Binding ActualHeight, RelativeSource={RelativeSource AncestorType=Border}}"
+                                    />
+                            </VisualBrush.Visual>
+                        </VisualBrush>
+                    </Border.OpacityMask>
                 <StackPanel>
-                    <ui:CardControl Style="{StaticResource WinUi3ExpanderCardControlBottomStyle}">
+                    <ui:CardControl Style="{StaticResource WinUi3ExpanderCardControlStyle}">
                         <ui:CardControl.Header>
                             <CheckBox IsChecked="{Binding TaskbarWidgetClickActionMerge, Mode=TwoWay}" Padding="0" IsEnabled="{Binding IsPremiumUnlocked}">
                                 <StackPanel Orientation="Vertical">
@@ -193,6 +170,7 @@
                         </ui:CardControl.Header>
                     </ui:CardControl>
                 </StackPanel>
+                </Border>
             </ui:CardExpander>
 
             <ui:InfoBar Grid.Row="5" Title="{DynamicResource TaskbarWidgetVisualIssuesWarning}" IsOpen="True" Severity="Informational" IsClosable="False" Margin="0,0,0,3" />

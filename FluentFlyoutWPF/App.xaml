@@ -18,6 +18,7 @@
                 <ResourceDictionary Source="Resources/Styles/CustomSlider.xaml"/>
                 <ResourceDictionary Source="Resources/Styles/CustomToolTip.xaml"/>
                 <ResourceDictionary Source="Resources/Styles/CustomCardControl.xaml"/>
+                <ResourceDictionary Source="Resources/Styles/CustomCardExpander.xaml"/>
                 <!-- default language en-US -->
                 <ResourceDictionary Source="Resources/Localization/Dictionary-en-US.xaml"/>
             </ResourceDictionary.MergedDictionaries>
