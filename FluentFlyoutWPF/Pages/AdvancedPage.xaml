@@ -13,6 +13,14 @@
       d:DataContext="{d:DesignInstance viewModels:UserSettings}"
       Foreground="{DynamicResource TextFillColorPrimaryBrush}"
       d:Background="White">
+    
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Resources/Styles/TextBoxWordWrap.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
 
     <StackPanel MaxWidth="1000" Margin="16">
         <TextBlock Text="{DynamicResource AdvancedSettingsTitle}" FontSize="24" FontWeight="SemiBold" Margin="0,0,0,24" />
@@ -66,11 +74,14 @@
             <ui:CardControl Icon="{ui:SymbolIcon ArrowCounterclockwise24}" Margin="0,0,0,76">
                 <ui:CardControl.Header>
                     <StackPanel Orientation="Vertical">
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="{DynamicResource LegacyTaskbarWidthTitle}" FontSize="14" FontWeight="Regular" VerticalAlignment="Center" />
-                            <fluentflyoutcontrols:AccentBadge Margin="6,0,0,0" />
-                            <ui:InfoBadge Value=" NEW " FontWeight="Medium" FontSize="10" Margin="2,-2,0,-2" Severity="Success" />
-                        </StackPanel>
+                        <fluentflyoutcontrols:TextBlockInline Text="{DynamicResource LegacyTaskbarWidthTitle}" FontSize="14" FontWeight="Regular" VerticalAlignment="Center">
+                            <fluentflyoutcontrols:TextBlockInline.InlineContent>
+                                <StackPanel Orientation="Horizontal">
+                                    <fluentflyoutcontrols:AccentBadge Margin="6,0,0,0" />
+                                    <ui:InfoBadge Value=" NEW " FontWeight="Medium" FontSize="10" Margin="2,-2,0,-2" Severity="Success" />
+                                </StackPanel>
+                            </fluentflyoutcontrols:TextBlockInline.InlineContent>
+                        </fluentflyoutcontrols:TextBlockInline>
                         <TextBlock Text="{DynamicResource LegacyTaskbarWidthDescription}" FontSize="12" Opacity="0.5" />
                     </StackPanel>
                 </ui:CardControl.Header>

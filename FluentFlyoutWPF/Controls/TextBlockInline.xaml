@@ -1,0 +1,46 @@
+<UserControl x:Class="FluentFlyout.Controls.TextBlockInline"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+             mc:Ignorable="d"
+             x:Name="root"
+             HorizontalAlignment="{Binding HorizontalAlignment, RelativeSource={RelativeSource Self}}"
+             VerticalAlignment="{Binding VerticalAlignment, RelativeSource={RelativeSource Self}}"
+             Visibility="{Binding Visibility, RelativeSource={RelativeSource Self}}"
+             Opacity="{Binding Opacity, RelativeSource={RelativeSource Self}}"
+             Margin="{Binding Margin, ElementName=root}">
+
+    <ui:TextBlock TextWrapping="{Binding TextWrapping, ElementName=root}"
+               TextAlignment="{Binding TextAlignment, ElementName=root}"
+               FontSize="{Binding FontSize, ElementName=root}"
+               FontWeight="{Binding FontWeight, ElementName=root}"
+               FontStyle="{Binding FontStyle, ElementName=root}"
+               FontStretch="{Binding FontStretch, ElementName=root}"
+               FontFamily="{Binding FontFamily, ElementName=root}"
+               Foreground="{Binding Foreground, ElementName=root}"
+               Background="{Binding Background, ElementName=root}"
+               TextDecorations="{Binding TextDecorations, ElementName=root}"
+               Padding="{Binding Padding, ElementName=root}"
+               Margin="{Binding Margin, ElementName=root}"
+               LineStackingStrategy="{Binding LineStackingStrategy, ElementName=root}"
+               LineHeight="{Binding FontSize, ElementName=root}">
+
+        <Run Text="{Binding Text, ElementName=root}" /><Run Text="&#160;" FontSize="0.1" /><InlineUIContainer BaselineAlignment="Center">
+            <ContentPresenter Content="{Binding InlineContent, ElementName=root}">
+                <ContentPresenter.Style>
+                    <Style TargetType="ContentPresenter">
+                        <Setter Property="Margin" Value="-2,0,0,0"/>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding FlowDirection, RelativeSource={RelativeSource AncestorType=TextBlock}}" Value="RightToLeft">
+                                <Setter Property="Margin" Value="0,0,-2,0" />
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </ContentPresenter.Style>
+            </ContentPresenter>
+        </InlineUIContainer>
+
+    </ui:TextBlock>
+</UserControl>

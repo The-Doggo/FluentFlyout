@@ -13,6 +13,14 @@
       d:DataContext="{d:DesignInstance viewModels:UserSettings}"
       Foreground="{DynamicResource TextFillColorPrimaryBrush}"
       d:Background="White">
+    
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Resources/Styles/TextBoxWordWrap.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
 
     <StackPanel MaxWidth="1000" Margin="16">
         <TextBlock Text="{DynamicResource TaskbarVisualizerTitle}" FontSize="24" FontWeight="SemiBold" FontFamily="Segoe UI Variable" Margin="0,0,0,20" />
@@ -91,10 +99,11 @@
             <ui:CardControl Icon="{ui:SymbolIcon SoundWaveCircle24}" Margin="0,0,0,24">
                 <ui:CardControl.Header>
                     <StackPanel Orientation="Vertical">
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="{DynamicResource TaskbarVisualizerEnabledTitle}" FontSize="14" FontWeight="Regular" VerticalAlignment="Center" />
-                            <fluentflyoutcontrols:AccentBadge Margin="6,0,0,0" />
-                        </StackPanel>
+                        <fluentflyoutcontrols:TextBlockInline Text="{DynamicResource TaskbarVisualizerEnabledTitle}" FontSize="14" FontWeight="Regular" VerticalAlignment="Center">
+                            <fluentflyoutcontrols:TextBlockInline.InlineContent>
+                                <fluentflyoutcontrols:AccentBadge Margin="6,0,0,0" />
+                            </fluentflyoutcontrols:TextBlockInline.InlineContent>
+                        </fluentflyoutcontrols:TextBlockInline>
                         <TextBlock Text="{DynamicResource TaskbarVisualizerEnabledDescription}" FontSize="12" Opacity="0.5" />
                     </StackPanel>
                 </ui:CardControl.Header>
@@ -165,10 +174,11 @@
             <ui:CardControl Icon="{ui:SymbolIcon ArrowAutofitUp24, Filled=False}" Margin="0,0,0,3">
                 <ui:CardControl.Header>
                     <StackPanel Orientation="Vertical">
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="{DynamicResource TaskbarVisualizerAudioPeakLevelTitle}" FontSize="14" FontWeight="Regular" VerticalAlignment="Center" />
-                            <ui:InfoBadge Value=" NEW " FontWeight="Medium" FontSize="10" Margin="6,-2,0,-2" Severity="Success" />
-                        </StackPanel>
+                        <fluentflyoutcontrols:TextBlockInline Text="{DynamicResource TaskbarVisualizerAudioPeakLevelTitle}" FontSize="14" FontWeight="Regular" VerticalAlignment="Center">
+                            <fluentflyoutcontrols:TextBlockInline.InlineContent>
+                                <ui:InfoBadge Value=" NEW " FontWeight="Medium" FontSize="10" Margin="6,0,0,0" Severity="Success" />
+                            </fluentflyoutcontrols:TextBlockInline.InlineContent>
+                        </fluentflyoutcontrols:TextBlockInline>
                         <TextBlock Text="{DynamicResource TaskbarVisualizerAudioPeakLevelDescription}" FontSize="12" Opacity="0.5" />
                     </StackPanel>
                 </ui:CardControl.Header>
@@ -197,10 +207,11 @@
             <ui:CardControl Icon="{ui:SymbolIcon ExpandUpRight24}" Margin="0,0,0,76">
                 <ui:CardControl.Header>
                     <StackPanel Orientation="Vertical">
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="{DynamicResource TaskbarVisualizerClickableTitle}" FontSize="14" FontWeight="Regular" VerticalAlignment="Center" />
-                            <ui:InfoBadge Value=" NEW " FontWeight="Medium" FontSize="10" Margin="6,-2,0,-2" Severity="Success" />
-                        </StackPanel>
+                        <fluentflyoutcontrols:TextBlockInline Text="{DynamicResource TaskbarVisualizerClickableTitle}" FontSize="14" FontWeight="Regular" VerticalAlignment="Center">
+                            <fluentflyoutcontrols:TextBlockInline.InlineContent>
+                                <ui:InfoBadge Value=" NEW " FontWeight="Medium" FontSize="10" Margin="6,0,0,0" Severity="Success" />
+                            </fluentflyoutcontrols:TextBlockInline.InlineContent>
+                        </fluentflyoutcontrols:TextBlockInline>
                         <TextBlock Text="{DynamicResource TaskbarVisualizerClickableDescription}" FontSize="12" Opacity="0.5" />
                     </StackPanel>
                 </ui:CardControl.Header>
