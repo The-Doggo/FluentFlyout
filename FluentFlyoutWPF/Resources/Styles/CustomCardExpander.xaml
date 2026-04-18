@@ -6,7 +6,7 @@
     
     <Style x:Key="WinUi3ExpanderStyle" TargetType="{x:Type ui:CardExpander}" BasedOn="{StaticResource {x:Type ui:CardExpander}}">
         <Setter Property="ContentPadding" Value="0" />
-        <Setter Property="Margin" Value="0,0,0,12" />
+        <Setter Property="Margin" Value="0,0,0,3" />
         <Setter Property="Background" Value="{DynamicResource CardBackgroundFillColorDefaultBrush}" />
         <Style.Resources>
             <SolidColorBrush x:Key="CardBackground" Color="Transparent" />

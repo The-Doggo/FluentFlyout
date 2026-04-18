@@ -176,7 +176,7 @@
             </ui:CardControl>
 
             <!-- Padding settings -->
-            <ui:CardExpander Grid.Row="9" Style="{StaticResource WinUi3ExpanderStyle}" Icon="{ui:SymbolIcon Wrench24}">
+            <ui:CardExpander Grid.Row="9" Style="{StaticResource WinUi3ExpanderStyle}" Margin="0,0,0,12" Icon="{ui:SymbolIcon Wrench24}">
                 <ui:CardExpander.Header>
                     <StackPanel Orientation="Vertical">
                         <TextBlock Text="{DynamicResource TaskbarWidgetPaddingSettingsTitle}" FontSize="14" FontWeight="Regular" VerticalAlignment="Center" />
