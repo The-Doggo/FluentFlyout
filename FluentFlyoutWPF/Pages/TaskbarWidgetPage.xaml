@@ -125,23 +125,19 @@
             <!-- Click Action settings -->
             <ui:CardExpander Grid.Row="4" Style="{StaticResource WinUi3ExpanderStyle}" Icon="{ui:SymbolIcon CursorClick24}">
                 <ui:CardExpander.Header>
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="Auto" />
-                        </Grid.ColumnDefinitions>
-                        <StackPanel Grid.Column="0" Orientation="Vertical">
+                    <fluentflyoutcontrols:WrappingGrid Margin="0,0,14,0" WrapThreshold="220" ColumnSpacing="14" RowSpacing="14" StaticItemIndex="1" RowDefinitions="Auto, 0, Auto" ColumnDefinitions="*, 0, Auto">
+                        <StackPanel Orientation="Vertical">
                             <TextBlock Text="{DynamicResource TaskbarWidgetClickActionTitle}" FontSize="14" FontWeight="Regular" VerticalAlignment="Center" />
                             <TextBlock Text="{DynamicResource TaskbarWidgetClickActionDescription}" FontSize="12" Opacity="0.5" />
                         </StackPanel>
-                        <!--<controls:ToggleSwitch Style="{StaticResource WinUi3ExpanderToggleSwitchStyle}" IsChecked="{Binding TaskbarWidgetClickAction, Mode=TwoWay}" IsEnabled="{Binding IsPremiumUnlocked}" />-->
-                        <ComboBox Style="{StaticResource WinUi3ExpanderComboBoxStyle}" IsEnabled="{Binding IsPremiumUnlocked}">
+                        <!--<controls:ToggleSwitch IsChecked="{Binding TaskbarWidgetClickAction, Mode=TwoWay}" IsEnabled="{Binding IsPremiumUnlocked}" />-->
+                        <ComboBox IsEnabled="{Binding IsPremiumUnlocked}">
                             <ComboBoxItem Content="{DynamicResource PositionBottomLeft}" />
                             <ComboBoxItem Content="{DynamicResource PositionBottomCenter}" />
                             <ComboBoxItem Content="{DynamicResource PositionBottomRight}" />
                         </ComboBox>
-                        <!--<ui:Button Grid.Column="1" Style="{StaticResource WinUi3ExpanderButtonStyle}" Content="Button" IsEnabled="{Binding IsPremiumUnlocked}" />-->
-                    </Grid>
+                        <!--<ui:Button Content="Button" IsEnabled="{Binding IsPremiumUnlocked}" />-->
+                    </fluentflyoutcontrols:WrappingGrid>
                 </ui:CardExpander.Header>
                 <StackPanel>
                     <ui:InfoBar Style="{StaticResource WinUi3ExpanderInfoBarStyle}" Title="{DynamicResource NativeExperienceInfo}" IsOpen="True" Severity="Informational" IsClosable="False" />
