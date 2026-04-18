@@ -127,7 +127,7 @@ namespace FluentFlyout.Controls
                 Children[1].Measure(new Size(double.PositiveInfinity, double.PositiveInfinity));
 
                 double staticWidth = Children[StaticItemIndex].DesiredSize.Width;
-                double remainingWidth = ActualWidth - staticWidth;
+                double remainingWidth = ActualWidth - staticWidth - ((ColumnSpacing < 0) ? 0 : ColumnSpacing);
 
                 if (((DesiredSizeIndex < 0) && (remainingWidth < WrapThreshold)) || ((-1 < DesiredSizeIndex) && (remainingWidth < Children[DesiredSizeIndex].DesiredSize.Width)))
                 {
