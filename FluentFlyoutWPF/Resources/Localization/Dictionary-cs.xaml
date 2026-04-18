@@ -67,8 +67,8 @@ skryje opakování,náhodné přehrávání a informace přehrávače</system:St
     <system:String x:Key="AppThemeDark"> Tmavý</system:String>
     <system:String x:Key="TrayIconLeftClickBehaviorTitle">Chování ikony v systémové oblasti při levém kliknutí</system:String>
     <system:String x:Key="TrayIconLeftClickBehaviorDescription">Vyberte, co se stane, když kliknete levím tlačítkem na ikony v systémové oblasti</system:String>
-    <system:String x:Key="TrayIconLeftClickOption1"> Otevřít nastavení</system:String>
-    <system:String x:Key="TrayIconLeftClickOption2"> Ukázat ploovucí přehrávač</system:String>
+    <system:String x:Key="OpenSettingsOption"> Otevřít nastavení</system:String>
+    <system:String x:Key="OpenFlyoutOption"> Ukázat ploovucí přehrávač</system:String>
     <system:String x:Key="Win11TrayIconTitle">Ikona v systémové oblasti ve stylu Windows 11</system:String>
     <system:String x:Key="Win11TrayIconDescription">Použije ikonu v systémové oblasti, která zapadá do Windows 11 (přepnutím změníš vzhled)</system:String>
     <system:String x:Key="AnimationSettingsTitle">Nastavení animací</system:String>

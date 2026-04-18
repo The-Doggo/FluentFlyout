@@ -72,7 +72,7 @@ Uwaga: Jako projekt open-source, te funkcje są również dostępne za darmo pop
     <system:String x:Key="TaskbarWidgetBackgroundBlurTitle">Rozmycie tła</system:String>
     <system:String x:Key="PremiumFeatureTitle">Funkcja premium</system:String>
     <system:String x:Key="AppThemeDark"> Ciemny</system:String>
-    <system:String x:Key="TrayIconLeftClickOption1"> Otwórz ustawienia</system:String>
+    <system:String x:Key="OpenSettingsOption"> Otwórz ustawienia</system:String>
     <system:String x:Key="AnimationSpeedOff">Wyłączone</system:String>
     <system:String x:Key="EasingLinear" xml:space="preserve"> Liniowy</system:String>
     <system:String x:Key="EasingSine" xml:space="preserve"> Sinusoidalny</system:String>
@@ -96,7 +96,7 @@ Uwaga: Jako projekt open-source, te funkcje są również dostępne za darmo pop
     <system:String x:Key="AppThemeLight"> Jasny</system:String>
     <system:String x:Key="TrayIconLeftClickBehaviorTitle">Zachowanie podczas kliknięcia w ikonę w zasobniku systemowym</system:String>
     <system:String x:Key="TrayIconLeftClickBehaviorDescription">Wybierz, co ma się stać po kliknięciu lewym przyciskiem myszy ikony w zasobniku systemowym</system:String>
-    <system:String x:Key="TrayIconLeftClickOption2"> Wyświetl panel główny</system:String>
+    <system:String x:Key="OpenFlyoutOption"> Wyświetl panel główny</system:String>
     <system:String x:Key="Win11TrayIconTitle">Ikona zasobnika w stylu Windows 11</system:String>
     <system:String x:Key="Win11TrayIconDescription">Używaj w zasobniku systemowym ikony pasującej do systemu Windows 11 (przełącz, aby odświeżyć motyw)</system:String>
     <system:String x:Key="TrayIconSectionTitle">Ikona zasobnika systemowego</system:String>

@@ -65,8 +65,8 @@
     <system:String x:Key="AppThemeDark"> مظلم</system:String>
     <system:String x:Key="TrayIconLeftClickBehaviorTitle">سلوك النقر بزر الفأرة الأيسر على أيقونة شريط المهام</system:String>
     <system:String x:Key="TrayIconLeftClickBehaviorDescription">اختر ما يحدث عند النقر بزر الفأرة الأيسر على أيقونة التطبيق</system:String>
-    <system:String x:Key="TrayIconLeftClickOption1"> فتح إعدادات</system:String>
-    <system:String x:Key="TrayIconLeftClickOption2"> عرض الوسائط النافذه المنبثقة</system:String>
+    <system:String x:Key="OpenSettingsOption"> فتح إعدادات</system:String>
+    <system:String x:Key="OpenFlyoutOption"> عرض الوسائط النافذه المنبثقة</system:String>
     <system:String x:Key="Win11TrayIconTitle">أيقونة مشابهة لنظام التشغيل Windows 11</system:String>
     <system:String x:Key="Win11TrayIconDescription">استخدم أيقونة علبة تتوافق مع نظام التشغيل Windows 11 (قم بالتبديل لتحديث السمة)</system:String>
     <system:String x:Key="AnimationSettingsTitle">إعدادات الرسوم المتحركة</system:String>

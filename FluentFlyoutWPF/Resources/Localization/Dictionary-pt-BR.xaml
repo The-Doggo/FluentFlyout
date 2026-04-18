@@ -83,8 +83,8 @@ Você pode ajudar a contribuir com traduções em</system:String>
     <system:String x:Key="TrayIcon_ViewLogsOption">Ver registros</system:String>
     <system:String x:Key="TrayIcon_ReportBugOption">Reportar um bug</system:String>
     <system:String x:Key="TrayIconLeftClickBehaviorDescription">Escolha o que acontece ao clicar com o botão esquerdo no ícone da bandeja</system:String>
-    <system:String x:Key="TrayIconLeftClickOption1"> Abrir Ajustes</system:String>
-    <system:String x:Key="TrayIconLeftClickOption2"> Mostrar painel de mídia</system:String>
+    <system:String x:Key="OpenSettingsOption"> Abrir Ajustes</system:String>
+    <system:String x:Key="OpenFlyoutOption"> Mostrar painel de mídia</system:String>
     <system:String x:Key="Win11TrayIconTitle">Ícone na bandeja no estilo do Windows 11</system:String>
     <system:String x:Key="Win11TrayIconDescription">Use um ícone na bandeja que combine com o Windows 11 (ative/desative para atualizar o tema)</system:String>
     <system:String x:Key="TrayIconSectionTitle">Ícone na Área de Notificação</system:String>

@@ -65,8 +65,8 @@
     <system:String x:Key="AppThemeDark"> 深色</system:String>
     <system:String x:Key="TrayIconLeftClickBehaviorTitle">左键单击托盘图标时的行为</system:String>
     <system:String x:Key="TrayIconLeftClickBehaviorDescription">选择左键单击本应用托盘图标时的行为</system:String>
-    <system:String x:Key="TrayIconLeftClickOption1"> 打开设置</system:String>
-    <system:String x:Key="TrayIconLeftClickOption2"> 显示媒体浮窗</system:String>
+    <system:String x:Key="OpenSettingsOption"> 打开设置</system:String>
+    <system:String x:Key="OpenFlyoutOption"> 显示媒体浮窗</system:String>
     <system:String x:Key="Win11TrayIconTitle">使用 Windows 11 样式的托盘图标</system:String>
     <system:String x:Key="Win11TrayIconDescription">使用符合 Windows 11 视觉样式的托盘图标（切换来刷新主题）</system:String>
     <system:String x:Key="AnimationSettingsTitle">过渡动画设置</system:String>

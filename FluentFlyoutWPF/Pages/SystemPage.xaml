@@ -135,8 +135,8 @@
                 </ui:CardControl.Header>
                 <StackPanel Orientation="Horizontal">
                     <ComboBox SelectedIndex="{Binding NIconLeftClick, Mode=TwoWay}">
-                        <ComboBoxItem Content="{DynamicResource TrayIconLeftClickOption1}" />
-                        <ComboBoxItem Content="{DynamicResource TrayIconLeftClickOption2}" />
+                        <ComboBoxItem Content="{DynamicResource OpenSettingsOption}" />
+                        <ComboBoxItem Content="{DynamicResource OpenFlyoutOption}" />
                     </ComboBox>
                 </StackPanel>
             </ui:CardControl>

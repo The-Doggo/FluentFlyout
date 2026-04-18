@@ -88,8 +88,8 @@ Anmerkung: Als Open-Source-Projekt sind diese Funktionen auch kostenlos verfügb
     <system:String x:Key="AppThemeDark"> Dunkel</system:String>
     <system:String x:Key="TrayIconLeftClickBehaviorTitle">SystemTray Symbol Linksklick verhalten</system:String>
     <system:String x:Key="TrayIconLeftClickBehaviorDescription">Wähle aus, was passiert, wenn du das Systemtray Symbol Links klickst</system:String>
-    <system:String x:Key="TrayIconLeftClickOption1"> Einstellungen öffnen</system:String>
-    <system:String x:Key="TrayIconLeftClickOption2"> Zeige das Flyout</system:String>
+    <system:String x:Key="OpenSettingsOption"> Einstellungen öffnen</system:String>
+    <system:String x:Key="OpenFlyoutOption"> Zeige das Flyout</system:String>
     <system:String x:Key="Win11TrayIconTitle">Symbol im Windows 11 Stil</system:String>
     <system:String x:Key="TrayIconSectionTitle">Systemtray Symbol</system:String>
     <system:String x:Key="HideTrayIconTitle">Verstecke das Systemtray Symbol ganz</system:String>

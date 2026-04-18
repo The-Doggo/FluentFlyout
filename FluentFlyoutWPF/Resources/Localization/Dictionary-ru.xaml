@@ -15,7 +15,7 @@
     <system:String x:Key="AppThemeDefault"> Как в системе</system:String>
     <system:String x:Key="AppThemeLight"> Светлая</system:String>
     <system:String x:Key="AppThemeDark"> Тёмная</system:String>
-    <system:String x:Key="TrayIconLeftClickOption1"> Открыть настройки</system:String>
+    <system:String x:Key="OpenSettingsOption"> Открыть настройки</system:String>
     <system:String x:Key="AnimationSettingsTitle">Настройки анимации</system:String>
     <system:String x:Key="AnimationDurationScaleTitle">Масштабирование продолжительности анимации</system:String>
     <system:String x:Key="AnimationSpeedOff">Откл.</system:String>
@@ -71,7 +71,7 @@
     <system:String x:Key="StartupAppsSettingsInfo">Если эта настройка не работает как ожидалось, проверьте</system:String>
     <system:String x:Key="TrayIconLeftClickBehaviorTitle">Действие по левому клику на иконку в трее</system:String>
     <system:String x:Key="TrayIconLeftClickBehaviorDescription">Выберите, что будет происходить при нажатии левой кнопкой мыши на иконку в трее</system:String>
-    <system:String x:Key="TrayIconLeftClickOption2"> Отобразить всплывающий плеер</system:String>
+    <system:String x:Key="OpenFlyoutOption"> Отобразить всплывающий плеер</system:String>
     <system:String x:Key="Win11TrayIconTitle">Стиль иконки как в Windows 11</system:String>
     <system:String x:Key="Win11TrayIconDescription">Использовать иконку в трее в стиле Windows 11 (переключите для обновления)</system:String>
     <system:String x:Key="AnimationSettingsDescription">Настройте анимации по своему вкусу</system:String>

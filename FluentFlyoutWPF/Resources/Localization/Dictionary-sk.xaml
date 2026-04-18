@@ -139,8 +139,8 @@ Poznámka: Keďže ide o open-source projekt, tieto funkcie sú k dispozícii aj
     <system:String x:Key="UseAlbumArtAccentColorDescription">Niektoré prvky používateľského rozhrania budú používať farbu obrázka albumu namiesto systémovej témy</system:String>
     <system:String x:Key="TrayIconLeftClickBehaviorTitle">Chovanie ikony v systémovej lište pri ľavom kliknutí</system:String>
     <system:String x:Key="TrayIconLeftClickBehaviorDescription">Vyberte, čo sa stane po kliknutí ľavým tlačidlom na ikonu v systémovej lište</system:String>
-    <system:String x:Key="TrayIconLeftClickOption1"> Otvoriť nastavenia</system:String>
-    <system:String x:Key="TrayIconLeftClickOption2"> Zobraziť Plávajúce okno Prehrávača</system:String>
+    <system:String x:Key="OpenSettingsOption"> Otvoriť nastavenia</system:String>
+    <system:String x:Key="OpenFlyoutOption"> Zobraziť Plávajúce okno Prehrávača</system:String>
     <system:String x:Key="Win11TrayIconTitle">Windows 11 štýl ikony v systémovej lište</system:String>
     <system:String x:Key="Win11TrayIconDescription">Použite ikonu v systémovej lište, ktorá sa zhoduje s Windows 11 (prepnutím zmeníte vzhľad)</system:String>
     <system:String x:Key="HideTrayIconTitle">Úplne skryť ikonu v systémovej lište</system:String>

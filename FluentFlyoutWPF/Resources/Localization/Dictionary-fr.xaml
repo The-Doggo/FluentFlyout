@@ -90,8 +90,8 @@ Note : En tant que projet open source, ces fonctionnalités sont également dis
     <system:String x:Key="AppThemeDark"> Sombre</system:String>
     <system:String x:Key="TrayIconLeftClickBehaviorTitle">Comportement du clic gauche sur l'icône de la barre d'état</system:String>
     <system:String x:Key="TrayIconLeftClickBehaviorDescription">Choisissez ce qui se passe lors d'un clic gauche sur l'icône de la barre d'état système</system:String>
-    <system:String x:Key="TrayIconLeftClickOption1"> Ouvrir les paramètres</system:String>
-    <system:String x:Key="TrayIconLeftClickOption2"> Afficher le menu déroulant Média</system:String>
+    <system:String x:Key="OpenSettingsOption"> Ouvrir les paramètres</system:String>
+    <system:String x:Key="OpenFlyoutOption"> Afficher le menu déroulant Média</system:String>
     <system:String x:Key="Win11TrayIconTitle">Icône de barre d'état similaire à Windows 11</system:String>
     <system:String x:Key="Win11TrayIconDescription">Utilisez une icône de barre d'état système qui correspond à Windows 11 (basculer pour actualiser le thème)</system:String>
     <system:String x:Key="TrayIconSectionTitle">Icône de la barre d'état</system:String>

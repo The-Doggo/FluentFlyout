@@ -59,7 +59,7 @@ tekrar, karıştırma ve oynatıcı bilgilerini gizler</system:String>
     <system:String x:Key="StartupAppsSettingsInfo">Bu ayar beklendiği gibi çalışmazsa, kontrol edin</system:String>
     <system:String x:Key="TrayIconLeftClickBehaviorTitle">Tepsi Simgesi Sol Tıklama Davranışı</system:String>
     <system:String x:Key="TrayIconLeftClickBehaviorDescription">Tepsi simgesine sol tıkladığınızda gerçekleşecek eylemi seçin</system:String>
-    <system:String x:Key="TrayIconLeftClickOption2"> Medya Açılır Penceresini Göster</system:String>
+    <system:String x:Key="OpenFlyoutOption"> Medya Açılır Penceresini Göster</system:String>
     <system:String x:Key="Win11TrayIconTitle">Windows 11 benzeri Tepsi Simgesi</system:String>
     <system:String x:Key="Win11TrayIconDescription">Windows 11 ile uyumlu bir tepsi simgesi kullanın (temayı yenilemek için değiştirin)</system:String>
     <system:String x:Key="AnimationSettingsTitle">Animasyon Ayarları</system:String>
@@ -80,7 +80,7 @@ veya Microsoft Store'da yorum bırakın!</system:String>
     <system:String x:Key="AppThemeDefault"> Windows Varsayılanı</system:String>
     <system:String x:Key="AppThemeLight"> Açık</system:String>
     <system:String x:Key="AppThemeDark"> Koyu</system:String>
-    <system:String x:Key="TrayIconLeftClickOption1"> Ayarları Aç</system:String>
+    <system:String x:Key="OpenSettingsOption"> Ayarları Aç</system:String>
     <system:String x:Key="AnimationSpeedOff">Kapalı</system:String>
     <system:String x:Key="EasingLinear" xml:space="preserve"> Doğrusal</system:String>
     <system:String x:Key="EasingSine" xml:space="preserve"> Sinüs</system:String>

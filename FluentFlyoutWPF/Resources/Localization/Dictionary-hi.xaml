@@ -73,8 +73,8 @@
     <system:String x:Key="AppThemeDark"> अँधेरा</system:String>
     <system:String x:Key="TrayIconLeftClickBehaviorTitle">ट्रे चिह्न बायाँ क्लिक व्यवहार</system:String>
     <system:String x:Key="TrayIconLeftClickBehaviorDescription">चुनें कि जब आप ट्रे आइकन पर बाईं ओर क्लिक करते हैं तो क्या होता है</system:String>
-    <system:String x:Key="TrayIconLeftClickOption1"> खुली सेटिंग</system:String>
-    <system:String x:Key="TrayIconLeftClickOption2"> मीडिया फ़्लाईआउट दिखाएँ</system:String>
+    <system:String x:Key="OpenSettingsOption"> खुली सेटिंग</system:String>
+    <system:String x:Key="OpenFlyoutOption"> मीडिया फ़्लाईआउट दिखाएँ</system:String>
     <system:String x:Key="Win11TrayIconTitle">विंडोज़ 11 जैसा ट्रे आइकन</system:String>
     <system:String x:Key="Win11TrayIconDescription">एक ट्रे आइकन का उपयोग करें जो विंडोज 11 से मेल खाता हो (थीम को रीफ्रेश करने के लिए टॉगल करें)</system:String>
     <system:String x:Key="AnimationSettingsTitle">एनिमेशन सेटिंग्स</system:String>

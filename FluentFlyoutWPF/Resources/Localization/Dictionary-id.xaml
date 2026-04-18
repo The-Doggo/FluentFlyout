@@ -89,8 +89,8 @@ Catatan: Sebagai proyek open-source, fitur-fitur ini juga tersedia secara gratis
     <system:String x:Key="AppThemeDark"> Gelap</system:String>
     <system:String x:Key="TrayIconLeftClickBehaviorTitle">Perilaku Klik Kiri pada Ikon Tray</system:String>
     <system:String x:Key="TrayIconLeftClickBehaviorDescription">Pilih apa yang terjadi saat Anda mengklik ikon tray dengan tombol kiri mouse</system:String>
-    <system:String x:Key="TrayIconLeftClickOption1"> Buka Pengaturan</system:String>
-    <system:String x:Key="TrayIconLeftClickOption2"> Tampilkan Media Flyout</system:String>
+    <system:String x:Key="OpenSettingsOption"> Buka Pengaturan</system:String>
+    <system:String x:Key="OpenFlyoutOption"> Tampilkan Media Flyout</system:String>
     <system:String x:Key="Win11TrayIconTitle">Ikon Tray Mirip Windows 11</system:String>
     <system:String x:Key="Win11TrayIconDescription">Gunakan ikon tray yang sesuai dengan Windows 11 (klik untuk memperbarui tema)</system:String>
     <system:String x:Key="TrayIconSectionTitle">Ikon Tray</system:String>

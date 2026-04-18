@@ -62,8 +62,8 @@ oculta los botones de repetir y aleatorio y la información del reproductor</sys
     <system:String x:Key="AppThemeDark"> Oscuro</system:String>
     <system:String x:Key="TrayIconLeftClickBehaviorTitle">Comportamiento del clic izquierdo en la bandeja</system:String>
     <system:String x:Key="TrayIconLeftClickBehaviorDescription">Elige qué pasa cuando haces clic izquierdo en el icono de la bandeja</system:String>
-    <system:String x:Key="TrayIconLeftClickOption1"> Abrir Ajustes</system:String>
-    <system:String x:Key="TrayIconLeftClickOption2"> Mostrar Flyout Multimedia</system:String>
+    <system:String x:Key="OpenSettingsOption"> Abrir Ajustes</system:String>
+    <system:String x:Key="OpenFlyoutOption"> Mostrar Flyout Multimedia</system:String>
     <system:String x:Key="Win11TrayIconTitle">Estilo de Windows 11 para el Icono de la bandeja</system:String>
     <system:String x:Key="Win11TrayIconDescription">Usa un icono que hace juego con Windows 11 (cambia para refrescar el tema)</system:String>
     <system:String x:Key="AnimationSettingsTitle">Parámetros de animación</system:String>

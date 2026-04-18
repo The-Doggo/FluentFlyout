@@ -96,8 +96,8 @@ Nota: essendo un progetto open-source, queste funzionalità sono comunque dispon
     <system:String x:Key="AppThemeDark"> Scuro</system:String>
     <system:String x:Key="TrayIconLeftClickBehaviorTitle">Clic Sinistro sull'Icona nella Barra delle Applicazioni</system:String>
     <system:String x:Key="TrayIconLeftClickBehaviorDescription">Scegli cosa succede quando clicchi con il tasto sinistro sull'icona nella barra delle applicazioni</system:String>
-    <system:String x:Key="TrayIconLeftClickOption1"> Apri Impostazioni</system:String>
-    <system:String x:Key="TrayIconLeftClickOption2"> Mostra Media Flyout</system:String>
+    <system:String x:Key="OpenSettingsOption"> Apri Impostazioni</system:String>
+    <system:String x:Key="OpenFlyoutOption"> Mostra Media Flyout</system:String>
     <system:String x:Key="Win11TrayIconTitle">Icona Stile Windows 11</system:String>
     <system:String x:Key="Win11TrayIconDescription">Applica all'icona della barra delle applicazioni uno stile in linea con Windows 11 (attiva per aggiornare lo stile)</system:String>
     <system:String x:Key="TrayIconSectionTitle">Icona Barra delle Applicazioni</system:String>

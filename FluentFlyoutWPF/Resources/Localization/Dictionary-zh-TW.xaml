@@ -61,7 +61,7 @@
     <system:String x:Key="AppThemeDefault"> Windows 預設</system:String>
     <system:String x:Key="AppThemeLight"> 淺色</system:String>
     <system:String x:Key="AppThemeDark"> 深色</system:String>
-    <system:String x:Key="TrayIconLeftClickOption2"> 顯示媒體彈出視窗</system:String>
+    <system:String x:Key="OpenFlyoutOption"> 顯示媒體彈出視窗</system:String>
     <system:String x:Key="Win11TrayIconTitle">Windows 11 風格系統匣圖示</system:String>
     <system:String x:Key="Win11TrayIconDescription">使用與 Windows 11 相符的系統匣圖示（切換以重新整理佈景主題）</system:String>
     <system:String x:Key="AnimationSettingsTitle">動畫設定</system:String>
@@ -100,7 +100,7 @@
     <system:String x:Key="StartupAppsHyperlinkText">啟動應用程式</system:String>
     <system:String x:Key="TrayIconLeftClickBehaviorTitle">系統匣圖示左鍵單擊行為</system:String>
     <system:String x:Key="TrayIconLeftClickBehaviorDescription">選擇單擊系統匣圖示時發生的情況</system:String>
-    <system:String x:Key="TrayIconLeftClickOption1"> 開啟設定</system:String>
+    <system:String x:Key="OpenSettingsOption"> 開啟設定</system:String>
     <system:String x:Key="AnimationEasingStyleTitle">動畫緩動風格</system:String>
     <system:String x:Key="TaskbarWidgetBackgroundBlurTitle">背景模糊</system:String>
     <system:String x:Key="PremiumFeatureTitle">高級功能</system:String>

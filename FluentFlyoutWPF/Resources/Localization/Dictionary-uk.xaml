@@ -82,7 +82,7 @@
     <system:String x:Key="TaskbarWidgetHideCompletelyDescription">Приховує весь віджет, коли медіа недоступне, замість відображення піктограми медіа</system:String>
     <system:String x:Key="TaskbarWidgetControlsTitle">Керування медіа</system:String>
     <system:String x:Key="AppThemeDark"> Темна</system:String>
-    <system:String x:Key="TrayIconLeftClickOption1"> Відкрити Налаштування</system:String>
+    <system:String x:Key="OpenSettingsOption"> Відкрити Налаштування</system:String>
     <system:String x:Key="TaskbarVisualizerOutputDeviceTitle">Пристрій виведення</system:String>
     <system:String x:Key="NextUpCustomizationTitle">Далі в черзі</system:String>
     <system:String x:Key="AnimationSettingsTitle">Налаштування анімації</system:String>
@@ -226,7 +226,7 @@
     <system:String x:Key="FailedToImportSettings">Не вдалося імпортувати налаштування. Для детальної інформації перевірте журнали.</system:String>
     <system:String x:Key="LegacyTaskbarWidthTitle">Застаріла система ширини панелі завдань</system:String>
     <system:String x:Key="LegacyTaskbarWidthDescription">Використовувати застарілу систему ширини панелі завдань для віджетів</system:String>
-    <system:String x:Key="TrayIconLeftClickOption2"> Показати спливаюче меню медіа</system:String>
+    <system:String x:Key="OpenFlyoutOption"> Показати спливаюче меню медіа</system:String>
     <system:String x:Key="AdvancedSettingsTitle">Розширені налаштування</system:String>
     <system:String x:Key="NextUpWindow_UpNextText">Далі:</system:String>
 </ResourceDictionary>

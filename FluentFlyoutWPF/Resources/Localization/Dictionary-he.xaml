@@ -66,7 +66,7 @@
     <system:String x:Key="LockWindow_NumLock">Num Lock</system:String>
     <system:String x:Key="PremiumFeatureTitle">תכונת פרימיום</system:String>
     <system:String x:Key="AppThemeTitle">ערכת נושא לאפליקציה</system:String>
-    <system:String x:Key="TrayIconLeftClickOption1"> פתח הגדרות</system:String>
+    <system:String x:Key="OpenSettingsOption"> פתח הגדרות</system:String>
     <system:String x:Key="TrayIconSectionTitle">סמל באזור ההודעות</system:String>
     <system:String x:Key="EasingLinear" xml:space="preserve"> לינארי</system:String>
     <system:String x:Key="EasingCubic" xml:space="preserve"> קוביתי</system:String>
@@ -118,7 +118,7 @@
     <system:String x:Key="AppThemeDefault"> ברירת מחדל של Windows</system:String>
     <system:String x:Key="TrayIconLeftClickBehaviorTitle">התנהגות לחיצה שמאלית על האייקון במגש</system:String>
     <system:String x:Key="TrayIconLeftClickBehaviorDescription">בחר מה יקרה כאשר תלחץ בלחיצה שמאלית על האייקון במגש</system:String>
-    <system:String x:Key="TrayIconLeftClickOption2"> הצגת חלון נשלף של מדיה</system:String>
+    <system:String x:Key="OpenFlyoutOption"> הצגת חלון נשלף של מדיה</system:String>
     <system:String x:Key="Win11TrayIconTitle">אייקון במגש בסגנון Windows 11</system:String>
     <system:String x:Key="Win11TrayIconDescription">השתמש באייקון במגש שמתאים ל-Windows 11 (הפעל את המתג כדי לרענן את העיצוב)</system:String>
     <system:String x:Key="HideTrayIconTitle">הסתר לחלוין את סמל המגש</system:String>

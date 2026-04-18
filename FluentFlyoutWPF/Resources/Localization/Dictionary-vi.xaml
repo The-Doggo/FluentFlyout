@@ -54,8 +54,8 @@
     <system:String x:Key="AppThemeDark"> Tối</system:String>
     <system:String x:Key="TrayIconLeftClickBehaviorTitle">Mở cửa sổ nào khi nhấn vào biểu tượng</system:String>
     <system:String x:Key="TrayIconLeftClickBehaviorDescription">Mở cửa sổ nào khi nhấn vào biểu tượng</system:String>
-    <system:String x:Key="TrayIconLeftClickOption1"> Cấu hình FluentFlyout</system:String>
-    <system:String x:Key="TrayIconLeftClickOption2"> Điều khiển phát lại</system:String>
+    <system:String x:Key="OpenSettingsOption"> Cấu hình FluentFlyout</system:String>
+    <system:String x:Key="OpenFlyoutOption"> Điều khiển phát lại</system:String>
     <system:String x:Key="Win11TrayIconTitle">Biểu tượng đơn sắc</system:String>
     <system:String x:Key="Win11TrayIconDescription">Dùng biểu tượng đơn sắc trong khay hệ thống</system:String>
     <system:String x:Key="AnimationSettingsTitle">Biến thiên vận tốc hiện, ẩn</system:String>
